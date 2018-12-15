@@ -1,38 +1,36 @@
 ﻿Data Source,Wikipedia,,,,,
 Continents,"Africa, Antarctica, Asia, Oceania/Australia, Europe, North America, South America",,,,,
-,,,,,,
 Country,Code,UN Country Code,Continent,Capital,Latitude,Longitude
-,,,,,,
-Afghanistan,AFG,004,Asia,Kabul,34.28,69.2
-Albania,ALB,008,Europe,Tirana,41.18,19.49
-Algeria,DZA,012,Africa,Algiers,36.42,3.08
-American Samoa,ASM,016,Oceania/Australia,Pago Pago,-14.16,-170.43
-Andorra,AND,020,Europe,Andorra la Vella,42.31,1.32
-Angola,AGO,024,Africa,Luanda,-8.5,13.15
+Afghanistan,AFG,4,Asia,Kabul,34.28,69.2
+Albania,ALB,8,Europe,Tirana,41.18,19.49
+Algeria,DZA,12,Africa,Algiers,36.42,3.08
+American Samoa,ASM,16,Oceania/Australia,Pago Pago,-14.16,-170.43
+Andorra,AND,20,Europe,Andorra la Vella,42.31,1.32
+Angola,AGO,24,Africa,Luanda,-8.5,13.15
 Anguilla,AIA,660,North America,The Valley ,18.22,-63.06
-Antigua and Barbuda,ATG,028,North America,St. John's,17.2,-61.48
-Argentina,ARG,032,South America,Buenos Aires,-36.3,-60
-Armenia,ARM,051,Asia,Yerevan,40.1,44.31
+Antigua and Barbuda,ATG,28,North America,St. John's,17.2,-61.48
+Argentina,ARG,32,South America,Buenos Aires,-36.3,-60
+Armenia,ARM,51,Asia,Yerevan,40.1,44.31
 Aruba,ABW,533,North America,Oranjestad,12.32,-70.02
-Australia,AUS,036,Oceania/Australia,Canberra,-35.15,149.08
-Austria,AUT,040,Europe,Vienna,48.12,16.22
-Azerbaijan,AZE,031,Asia,Baku,40.29,49.56
-"Bahamas, The",BHS,044,North America,Nassau,25.05,-77.02
-Bahrain,BHR,048,Asia,Manama,26.1,50.3
-Bangladesh,BGD,050,Asia,Dhaka,23.43,90.26
-Barbados,BRB,052,North America,Bridgetown,13.05,-59.3
+Australia,AUS,36,Oceania/Australia,Canberra,-35.15,149.08
+Austria,AUT,40,Europe,Vienna,48.12,16.22
+Azerbaijan,AZE,31,Asia,Baku,40.29,49.56
+"Bahamas, The",BHS,44,North America,Nassau,25.05,-77.02
+Bahrain,BHR,48,Asia,Manama,26.1,50.3
+Bangladesh,BGD,50,Asia,Dhaka,23.43,90.26
+Barbados,BRB,52,North America,Bridgetown,13.05,-59.3
 Belarus,BLR,112,Europe,Minsk,53.52,27.3
-Belgium,BEL,056,Europe,Brussels,50.51,4.21
-Belize,BLZ,084,North America,Belmopan,17.18,-88.3
+Belgium,BEL,56,Europe,Brussels,50.51,4.21
+Belize,BLZ,84,North America,Belmopan,17.18,-88.3
 Benin,BEN,204,Africa,Porto-Novo,6.23,2.42
-Bermuda,BMU,060,North America,Hamilton,32.3,-64.75
-Bhutan,BTN,064,Asia,Thimphu,27.31,89.45
-Bolivia,BOL,068,South America,Sucre,-16.2,-68.1
-Bosnia and Herzegovina,BIH,070,Europe,Sarajevo,43.52,18.26
-Botswana,BWA,072,Africa,Gaborone,-24.45,25.57
-Brazil,BRA,076,South America,Brasilia,-15.47,-47.55
-British Virgin Islands,VGB,092,North America,Road Town,18.27,-64.37
-Brunei Darussalam,BRN,096,Asia,Bandar Seri Begawan,4.52,115
+Bermuda,BMU,60,North America,Hamilton,32.3,-64.75
+Bhutan,BTN,64,Asia,Thimphu,27.31,89.45
+Bolivia,BOL,68,South America,Sucre,-16.2,-68.1
+Bosnia and Herzegovina,BIH,70,Europe,Sarajevo,43.52,18.26
+Botswana,BWA,72,Africa,Gaborone,-24.45,25.57
+Brazil,BRA,76,South America,Brasilia,-15.47,-47.55
+British Virgin Islands,VGB,92,North America,Road Town,18.27,-64.37
+Brunei Darussalam,BRN,96,Asia,Bandar Seri Begawan,4.52,115
 Bulgaria,BGR,100,Europe,Sofia,42.45,23.2
 Burkina Faso,BFA,854,Africa,Ouagadougou,12.5,-1.3
 Burundi,BDI,108,Africa,Bujumbura,-3.16,29.18
@@ -190,7 +188,7 @@ Singapore,SGP,702,Asia,Singapore,1.35,103.81
 Sint Maarten (Dutch part),SXM,534,North America,Philipsburg,18.02,-63.04
 Slovak Republic,SVK,703,Europe,Bratislava,48.1,17.07
 Slovenia,SVN,705,Europe,Ljubijana,46.04,14.33
-Solomon Islands,SLB,090,Oceania/Australia,Honiara,-9.27,159.57
+Solomon Islands,SLB,90,Oceania/Australia,Honiara,-9.27,159.57
 Somalia,SOM,706,Africa,Mogadishu,2.02,45.25
 South Africa,ZAF,710,Africa,Pretoria,-25.44,28.12
 South Sudan,SSD,728,Africa,Juba,4.85,31.57
