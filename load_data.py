@@ -70,7 +70,7 @@ for i in range(0, 8):
         df.to_sql(table, engine)
         print(f"{table}, has been created successfully")
     except:
-        print(f"{table}, can not created")
+        print(f"{table}, can not be created")
 
 
 # # Query the data from sqlite table population_by_age_both_sexes.sqlite
