@@ -61,12 +61,13 @@ def load_from_csv_to_sqlite():
         # Create index, may not need this 
         df.insert(0, 'ID', range(0, len(df)))
         df.set_index('ID', inplace=True)
+
         
-        if i not in [3,4]:
+        if i not in [3,4]: # these two files don't need this setp
             if i in [0, 1, 2]:
-                column_range = range(2, len(df.columns))
+                column_range = range(2, len(df.columns))  # start at 3rd column 
             else:
-                column_range = range(3, len(df.columns))
+                column_range = range(3, len(df.columns))  # start at 4th column 
 
             for j in column_range:
                 # remove space, replace "…" with "0", then convert to integer
