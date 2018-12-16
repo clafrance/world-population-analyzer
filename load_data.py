@@ -56,6 +56,8 @@ tables = [
 
 for i in range(0, 8):
     df = pd.read_csv(data_files[i])
+
+    # Create index, may not need this 
     df.insert(0, 'ID', range(0, len(df)))
     df.set_index('ID', inplace=True)
     
@@ -66,13 +68,13 @@ for i in range(0, 8):
             column_range = range(3, len(df.columns))
 
         for j in column_range:
-            paterns = [" ", "…"]
             df.iloc[:, j] = [int(x.replace(" ", "").replace("…", "0")) for x in df.iloc[:, j]]
     
     db_url = db_urls[i]
     table = tables[i]
     db_file = db_files[i]
     
+    # Remove the files if exist
     if os.path.exists(db_file):
         os.remove(db_file)
     
@@ -80,10 +82,7 @@ for i in range(0, 8):
     df.to_sql(table, engine)
 
 
-
-
-
-# # Querr the data from sqlite table population_by_age_both_sexes.sqlite
+# # Query the data from sqlite table population_by_age_both_sexes.sqlite
 # engine = create_engine("sqlite:///./db/population_by_age_both_sexes.sqlite")
 # inspector = inspect(engine)
 # inspector.get_table_names()
