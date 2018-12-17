@@ -11,7 +11,7 @@ def load_from_cvs_to_sqlite():
     return_value = True
 
     data_files = [
-             'data/TOTAL_POPULATION_BOTH_SEXES.csv', 
+             'data/TOTAL_POPULATION_BOTH_SEXES.csv',
              'data/TOTAL_POPULATION_FEMALE.csv',
              'data/TOTAL_POPULATION_MALE.csv',
              'data/SEX_RATIO_OF_TOTAL_POPULATION.csv',
@@ -21,7 +21,7 @@ def load_from_cvs_to_sqlite():
              'data/POPULATION_BY_AGE_BOTH_SEXES.csv']  
 
     tables = [
-          'total_population_both_sexs',
+          'total_population_both_sexes',
           'total_population_female',
           'total_population_male',
           'sex_ratio_of_total_population',
@@ -44,12 +44,12 @@ def load_from_cvs_to_sqlite():
     # 1. read the csv files into Panda dataframe
     # 2. Remove the space from the data in dataframes, and convert "…" to "0" if needed
     # 3. then create tables in sqlite from the dataframes
-    for i in range(0, 8):
+    for i in range(0, len(data_files)):
 
         # read the csv files into Panda dataframe
         df = pd.read_csv(data_files[i])
 
-        # Create index for the df, may not need this 
+        # Create index for the df 
         df.insert(0, 'ID', range(0, len(df)))
         df.set_index('ID', inplace=True)
         
@@ -66,7 +66,7 @@ def load_from_cvs_to_sqlite():
         # Create the table
         table = tables[i]
         try: 
-            df.to_sql(table, engine)
+            df.to_sql(table, engine, if_exists='replace')
             print(f"Table, {table}, has been created successfully")
         except:
             print(f"Table {table}, can not be created")
