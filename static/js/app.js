@@ -1,6 +1,7 @@
 function countryInfo(country) {
 
-	let url = `/country_info/${country}`
+	let url = `/country_info/${country}`;
+	
 }
 
 
