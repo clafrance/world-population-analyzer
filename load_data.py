@@ -8,8 +8,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import inspect
 
 
+
 # Function to load data from csv file to sqlite tables
 def load_from_csv_to_sqlite_tables(data_files, table_names, engine):
+    """Return True if load csv data to sqlite successfully"""
+
     return_value = True
     
     for i in range(0, len(data_files)):
@@ -22,7 +25,7 @@ def load_from_csv_to_sqlite_tables(data_files, table_names, engine):
         df.set_index('ID', inplace=True)
 
         # Remove the space from the data in dataframes, and convert "…" to "0" if needed
-        if i not in [3, 4, 8]: # data in these two files do not need to be cleaned
+        if i not in [3, 4, 8]: # data in these three files do not need to be cleaned
             if i in [0, 1, 2]:
                 column_range = range(2, len(df.columns)) # Start with 3rd column
             else:
@@ -45,8 +48,16 @@ def load_from_csv_to_sqlite_tables(data_files, table_names, engine):
     return return_value
 
 
-# Function to sqlite create table for table_names 0,1,2
+
+# Code below is for adding primary keys to the tables in sqlite. 
+# As alter table to add pk does not work for SQLite, 
+# need to create new tables with PK, then load data from the tables created above to the new tables.
+# drop the tables created above
+
+# Generate create table statement for table_names 0,1,2
 def create_table_0_1_2(new_table_name):
+    """Return create table statement for table_names with index 0, 1, 2"""
+
     create_table = f"CREATE TABLE IF NOT EXISTS {new_table_name} (\
     ID BIGINT PRIMARY KEY,\
     region_subregion_country_area TEXT,\
@@ -76,8 +87,10 @@ def create_table_0_1_2(new_table_name):
     return create_table
 
 
-# Function to sqlite create table for table_names 3
+# Generate create table statement for table_names 3
 def create_table_3(new_table_name):
+    """Return create table statement for table_names with index 3"""
+
     create_table = f"CREATE TABLE IF NOT EXISTS {new_table_name} (\
     ID BIGINT PRIMARY KEY,\
     region_subregion_country_area TEXT,\
@@ -94,6 +107,8 @@ def create_table_3(new_table_name):
 
 # Function to sqlite create table for table_names 4
 def create_table_4(new_table_name):
+    """Return create table statement for table_names with index 4"""
+
     create_table = f"CREATE TABLE IF NOT EXISTS {new_table_name} (\
     ID BIGINT PRIMARY KEY,\
     region_subregion_country_area TEXT,\
@@ -110,6 +125,8 @@ def create_table_4(new_table_name):
 
 # Function to sqlite create table for table_names 5,6,7
 def create_table_5_6_7(new_table_name):
+    """Return create table statement for table_names with index 5, 6, 7"""
+
     create_table = f"CREATE TABLE IF NOT EXISTS {new_table_name} (\
     ID BIGINT PRIMARY KEY,\
     region_subregion_country_area TEXT,\
@@ -123,9 +140,12 @@ def create_table_5_6_7(new_table_name):
     '75-79' BIGINT, '80+' BIGINT, '80-84' BIGINT,\
     '85-89' BIGINT, '90-94' BIGINT, '95-99' BIGINT, '100+');"
     return create_table
+    
 
-# Function to sqlite create table for table_names 5,6,7
+# Function to sqlite create table for table_names 8
 def create_table_8(new_table_name):
+    """Return create table statement for table_names with index 8"""
+
     create_table = f"CREATE TABLE IF NOT EXISTS {new_table_name} (\
     ID BIGINT PRIMARY KEY,\
     country TEXT,\
@@ -137,20 +157,27 @@ def create_table_8(new_table_name):
     longitude FLOAT);"
     return create_table
 
+
 # Create insert statement
 def insert_data(table_name, new_table_name):
+    """Return insert data statement"""
+
     insert_data = f"INSERT INTO {new_table_name} SELECT * FROM {table_name};"
     return insert_data
 
 
 # Create drop table statement
 def drop_table(table_name):
+    """Return drop table statement"""
+
     drop_table = f"DROP TABLE {table_name};"
     return drop_table
 
 
-# Drop original tables
+# Function to drop tables
 def drop_tables(table_names, cur):
+    """Return True if drop tables successful"""
+
     return_value = True
     try: 
         cur.execute("begin")
@@ -171,6 +198,8 @@ def drop_tables(table_names, cur):
 
 # Function to create table with pk and insert data
 def create_sqlite_tables_with_pk(orig_table_names, new_table_names, cur):
+    """Return True if create sqlite tables with PK and load data successful"""
+
     return_value = True
     for i in range(0, len(new_table_names)):
         orig_table_name = orig_table_names[i]
@@ -200,6 +229,8 @@ def create_sqlite_tables_with_pk(orig_table_names, new_table_names, cur):
 
 
 def load_to_sqlite():
+    """Execute the functions to load data to sqlite and create PK for the tables"""
+
     db_url = 'sqlite:///./db/world_population.sqlite'
 
     data_files = [
@@ -260,17 +291,17 @@ def load_to_sqlite():
     conn = sqlite3.connect('db/world_population.sqlite') 
     conn.isolation_level = None
     cur = conn.cursor()
-    print("End: connect to SQLite and create cursor successful")
+    print("End: connect to SQLite and create cursor")
     print("")
         
-    print("Start: create tables with PK")
+    print("Start: create new tables with PK, load data to the new tables from original tables")
     create_sqlite_tables_with_pk(orig_table_names, new_table_names, cur)
-    print("End: create tables with PK")
+    print("End: create new tables with PK...")
     print("")
         
-    print("Start: drop tables")
+    print("Start: drop original tables")
     drop_tables(orig_table_names, cur)
-    print("End: drop tables")
+    print("End: drop original tables")
     print("")
         
     print("Starting: close cursor, close SQLite Connection")
@@ -278,8 +309,9 @@ def load_to_sqlite():
     conn.close()
     print("End: close cursor, close SQLite Connection")
     print("Finished Loading data")
+    print("")
 
-load_to_sqlite()
+# load_to_sqlite()
 
 
 # # Query the data from sqlite table population_by_age_both_sexes.sqlite

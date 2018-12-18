@@ -1,3 +1,13 @@
+function countryInfo(country) {
+
+	let url = `/country_info/${country}`
+}
+
+
+
+
+
+
 // function buildMetadata(sample) {
 
 //   //// Builds the metadata panel
