@@ -1,9 +1,14 @@
+
+
+
+
 // Function to initilize the page
 function init() {
+
 	var selector = d3.select("#selCountry");
 
 	d3.json("/countries").then((countries) => {
-		countries.forEach(country) => {
+		countries.forEach((country) => {
 			selector
 				.append("option")
 				.text(country)
@@ -14,7 +19,7 @@ function init() {
   //   const firstCountry = countries[0];
   //   buildCharts(firstCountry);
   //   buildMetadata(firstCountry);
-	}
+	});
 }
 
 
@@ -31,7 +36,7 @@ function countryInfo(country) {
 }
 
 
-
+init();
 
 
 

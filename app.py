@@ -64,8 +64,11 @@ def countries():
 
     stmt = db.session.query(Country_Continent).statement
     df = pd.read_sql_query(stmt, db.session.bind)
+    country_list = list(df.iloc[:, 1])
 
-    return jsonify(list(df.iloc[:, 1]))
+    country_list.insert(0, "")
+
+    return jsonify(country_list)
 
 
 

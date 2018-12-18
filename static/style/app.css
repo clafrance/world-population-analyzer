@@ -1,0 +1,9 @@
+.well {
+	width: 150px;
+	padding-bottom: 30px;
+}
+
+#selCountry {
+	display: block;
+	width: 105px;
+}
