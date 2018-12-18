@@ -1,7 +1,33 @@
+// Function to initilize the page
+function init() {
+	var selector = d3.select("#selCountry");
+
+	d3.json("/countries").then((countries) => {
+		countries.forEach(country) => {
+			selector
+				.append("option")
+				.text(country)
+				.property("value", country);
+		});
+
+		// // Use the first country from the list to build the initial plots
+  //   const firstCountry = countries[0];
+  //   buildCharts(firstCountry);
+  //   buildMetadata(firstCountry);
+	}
+}
+
+
+
+
+
+
+
+
 function countryInfo(country) {
 
 	let url = `/country_info/${country}`;
-	
+
 }
 
 

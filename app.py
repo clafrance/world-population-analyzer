@@ -47,16 +47,25 @@ Population_By_Age_Both_Sexes = Base.classes.population_by_age_both_sexes
 Country_Continent = Base.classes.country_continent
   
 
-db.session.query(Total_Population_Both_Sexes)
+# db.session.query(Total_Population_Both_Sexes)
 
 
 @app.route("/")
 def index():
     """Return the homepage."""
-    
+
     return render_template("index.html")
 
 
+
+@app.route("/countries")
+def countries():
+    """Return a list of countries."""
+
+    stmt = db.session.query(Country_Continent).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+
+    return jsonify(list(df.iloc[:, 1]))
 
 
 
