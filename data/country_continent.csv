@@ -1,7 +1,5 @@
-﻿Data Source,Wikipedia,,,,,
-Continents,"Africa, Antarctica, Asia, Oceania/Australia, Europe, North America, South America",,,,,
-Country,Code,UN Country Code,Continent,Capital,Latitude,Longitude
-Afghanistan,AFG,4,Asia,Kabul,34.28,69.2
+﻿country,code,country_code,continent,capital,latitude,longitude
+Afghanistan,AFG,4,Asia,Kabul,34.28,s
 Albania,ALB,8,Europe,Tirana,41.18,19.49
 Algeria,DZA,12,Africa,Algiers,36.42,3.08
 American Samoa,ASM,16,Oceania/Australia,Pago Pago,-14.16,-170.43
