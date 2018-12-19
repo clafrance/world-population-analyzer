@@ -28,11 +28,26 @@
 // // 	});
 // }
 
+function worldInfo() {
+	let panel = d3.select("#country-metadata");
+	panel.html("");
+	let div = panel.append("div");
+	div.append("p").attr("class", "bold").text(`Total Population:`);
+	div.append("p").text(`1000000000`);
+
+	div.append("p").attr("class", "bold").text(`Female Population:`);
+	div.append("p").text(`500000000`);
+
+	div.append("p").attr("class", "bold").text(`Male Population:`);
+	div.append("p").text(`500000000`);    
+}
+
 
 function countryInfo(country) {
 	let url = `/country_info/${country}`; 
 
 	d3.json(url).then(function(data) {
+
 		// Select the panel with id of `#country-metadata`
 		let panel = d3.select("#country-metadata");
 
@@ -58,7 +73,6 @@ function countryInfo(country) {
 }
 
 
-
 // Function to initilize the page
 function init() {
 
@@ -72,18 +86,27 @@ function init() {
 				.property("value", country);
 		});
 
-	// Use the first country from the list to build the initial plots
-  //   const firstCountry = countries[0];
-  //   buildCharts(firstCountry);
-  //   buildMetadata(firstCountry);
+		// Use the first country from the list to build the initial plots
+    const world = countries[0];
+    worldInfo();
+
+    // Add all build chart function here here:
+    // buildCharts(world);
+    // buildMetadata(world);
 	});
 }
 
 
 // Function to build new charts when select a country
 function optionChanged(newCountry) {
+
   // buildCharts(newSample);
-  countryInfo(newCountry);
+  if (newCountry === "WORLD") {
+  	worldInfo();
+  } else {
+  	countryInfo(newCountry);
+  }
+
 }
 
 

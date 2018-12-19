@@ -66,7 +66,7 @@ def countries():
     df = pd.read_sql_query(stmt, db.session.bind)
     country_list = list(df.iloc[:, 1])
 
-    country_list.insert(0, "")
+    country_list.insert(0, "WORLD")
 
     return jsonify(country_list)
 
