@@ -28,6 +28,7 @@
 // // 	});
 // }
 
+
 function countryInfo(country) {
 	let url = `/country_info/${country}`; 
 
