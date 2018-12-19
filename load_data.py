@@ -105,7 +105,7 @@ def create_table_3(new_table_name):
     return create_table
 
 
-# Function to sqlite create table for table_names 4
+# Function to create table for table_names 4
 def create_table_4(new_table_name):
     """Return create table statement for table_names with index 4"""
 
@@ -123,7 +123,7 @@ def create_table_4(new_table_name):
     return create_table
 
 
-# Function to sqlite create table for table_names 5,6,7
+# Function to create table for table_names 5,6,7
 def create_table_5_6_7(new_table_name):
     """Return create table statement for table_names with index 5, 6, 7"""
 
@@ -142,7 +142,7 @@ def create_table_5_6_7(new_table_name):
     return create_table
     
 
-# Function to sqlite create table for table_names 8
+# Function to create table for table_names 8
 def create_table_8(new_table_name):
     """Return create table statement for table_names with index 8"""
 
@@ -196,7 +196,7 @@ def drop_tables(table_names, cur):
     return  return_value 
     
 
-# Function to create table with pk and insert data
+# Function to create new tablea with pk and insert data
 def create_sqlite_tables_with_pk(orig_table_names, new_table_names, cur):
     """Return True if create sqlite tables with PK and load data successful"""
 
@@ -310,13 +310,3 @@ def load_to_sqlite():
     print("End: close cursor, close SQLite Connection")
     print("Finished Loading data")
     print("")
-
-# load_to_sqlite()
-
-
-# # Query the data from sqlite table population_by_age_both_sexes.sqlite
-# engine = create_engine("sqlite:///./db/world_population.sqlite")
-# inspector = inspect(engine)
-# inspector.get_table_names()
-# inspector.get_columns('population_by_age_both_sexes')
-# engine.execute("SELECT * FROM population_by_age_both_sexes").fetchall()
