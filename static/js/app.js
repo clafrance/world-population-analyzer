@@ -33,17 +33,30 @@ function countryInfo(country) {
 	let url = `/country_info/${country}`; 
 
 	d3.json(url).then(function(data) {
-		console.log("nnn");
+		// Select the panel with id of `#country-metadata`
+		let panel = d3.select("#country-metadata");
+
+		// Clear any existing metadata
+    panel.html("");
+
+    let div = panel.append("div");
+    Object.entries(data).forEach(function([key, value]) {
+      if (!value) {
+        div.append("p").text(`${key}: N/A`);
+      } else {
+
+      	if (key ===  "Code") {
+      		div.append("p").attr("class", "bold").text(`Country ${key}:`);
+      	} else {
+      		div.append("p").attr("class", "bold").text(`${key}:`);
+      	}
+      	div.append("p").text(`${value}`);
+        // div.append("p").text(`${key}: ${value}`);
+      }    	
+    });
 	});
 }
 
-
-// Function to build new charts when select a country
-function optionChanged(newCountry) {
-	console.log("Hi");
-  // buildCharts(newSample);
-  countryInfo(newCountry);
-}
 
 
 // Function to initilize the page
@@ -67,11 +80,10 @@ function init() {
 }
 
 
-
-function countryInfo(country) {
-
-	let url = `/country_info/${country}`;
-
+// Function to build new charts when select a country
+function optionChanged(newCountry) {
+  // buildCharts(newSample);
+  countryInfo(newCountry);
 }
 
 
