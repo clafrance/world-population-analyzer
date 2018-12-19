@@ -7,3 +7,8 @@
 	display: block;
 	width: 105px;
 }
+
+#country-info {
+	border: 1px solid red;
+	width: 150px;
+}
