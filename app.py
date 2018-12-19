@@ -71,7 +71,43 @@ def countries():
     return jsonify(country_list)
 
 
+@app.route("/years_list")
+def years_list():
+    """Return a list of Years."""
 
+    stmt = db.session.query(Total_Population_Both_Sexes).statement
+    df_all = pd.read_sql_query(stmt, db.session.bind)
+    return jsonify(list(df_all.columns[3:]))
+
+@app.route("/population_all/<region>")
+def population_all(region):
+    """Return population for both  sex for given  region selection."""
+    stmt = db.session.query(Total_Population_Both_Sexes).filter(Total_Population_Both_Sexes.region_subregion_country_area == region).statement
+    df_all = pd.read_sql_query(stmt, db.session.bind)
+    df_all = df_all.set_index("region_subregion_country_area", drop = True)
+    df_all.drop(columns = ['ID','country_code'],inplace=True)
+
+    return jsonify(df_all.T.to_dict('list'))
+
+@app.route("/population_male/<region>")
+def population_male(region):
+    """Return population for both  sex for given  region selection."""
+    stmt = db.session.query(Total_Population_Male).filter(Total_Population_Male.region_subregion_country_area == region).statement
+    df_all = pd.read_sql_query(stmt, db.session.bind)
+    df_all = df_all.set_index("region_subregion_country_area", drop = True)
+    df_all.drop(columns = ['ID','country_code'],inplace=True)
+
+    return jsonify(df_all.T.to_dict('list')) 
+
+@app.route("/population_female/<region>")
+def population_female(region):
+    """Return population for both  sex for given  region selection."""
+    stmt = db.session.query(Total_Population_Female).filter(Total_Population_Female.region_subregion_country_area == region).statement
+    df_all = pd.read_sql_query(stmt, db.session.bind)
+    df_all = df_all.set_index("region_subregion_country_area", drop = True)
+    df_all.drop(columns = ['ID','country_code'],inplace=True)
+
+    return jsonify(df_all.T.to_dict('list'))       
 
 @app.route("/country_info/<country>")
 def country_info(country):
