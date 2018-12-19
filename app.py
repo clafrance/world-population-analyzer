@@ -73,31 +73,32 @@ def countries():
 
 
 
-# @app.route("/country_info/<country>")
-# def country_info(country):
-#     """Return the country information for a given country"""
+@app.route("/country_info/<country>")
+def country_info(country):
+    """Return the country information for a given country"""
 
-#     sel = [
-#         Country_Continent.code,
-#         Country_Continent.capital,
-#         Country_Continent.latitude,
-#         Country_Continent.longitude,
-#         Country_Continent.continent
-#     ]
+    sel = [
+        Country_Continent.country,
+        Country_Continent.code,
+        Country_Continent.country_code,
+        Country_Continent.capital,
+        Country_Continent.latitude,
+        Country_Continent.longitude,
+        Country_Continent.continent
+    ]
 
-#     results = db.session.query(*sel).filter(Country_Continent.country == country).all()
+    results = db.session.query(*sel).filter(Country_Continent.country == country).first()
 
-#     country_info = {}
-#     for result in results:
-#         country_info["Code"] = results[0]
-#         country_info["Capital"] = results[1]
-#         country_info["Latitude"] = results[2]
-#         country_info["Longitude"] = results[3]
-#         country_info["Continent"] = results[4]
+    country_info = {}
+    for result in results:
+        country_info["Code"] = results[1]
+        country_info["Capital"] = results[3]
+        country_info["Latitude"] = results[4]
+        country_info["Longitude"] = results[5]
+        country_info["Continent"] = results[6]
 
-#     print(results)
-
-#     return jsonify(country_info)
+    # print(results)
+    return jsonify(country_info)
 
 
 # @app.route("/names")
