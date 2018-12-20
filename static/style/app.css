@@ -1,6 +1,15 @@
-.well {
+body,
+html {
+  height: 500px;
+}
+
+/*.well {
 	width: 150px;
 	padding-bottom: 30px;
+}*/
+
+#panel-area {
+	padding-left: 0;
 }
 
 #selCountry {
@@ -14,4 +23,18 @@
 
 .bold {
 	font-weight: bold;
+}
+
+div.row {
+	margin-top: 30px;
+	border: 1px solid red;
+}
+
+#map-area {
+	padding-right: 0;
+	border: 1px solid blue;
+}
+
+#map {
+	height: 500px;
 }
