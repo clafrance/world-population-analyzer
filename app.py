@@ -6,7 +6,7 @@ import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, func
 
 
 from flask import Flask, jsonify, render_template
@@ -135,6 +135,9 @@ def country_info(country):
 
     # print(results)
     return jsonify(country_info)
+
+
+    
 
 
 if __name__ == "__main__":
