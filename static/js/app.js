@@ -1,33 +1,4 @@
-// function countryInfo(country) {
-// 	console.log(country);
-// // 	let url = `/country_info/${country}`;
-
-// // 	console.log(country);
-
-// // 	d3.json(url).then(function(data) {
-
-// // 		// Select the panel with id of `#country-metadata`
-// // 		let panel = d3.select("#country-metadata");
-
-// // 		cousole.log(panel);
-
-// // 		// Clear any existing metadata
-// //     panel.html("");
-
-// //     let div = panel.append("div");
-// //     Object.entries(data).forEach(function([key, value]) {
-// //       if (!value) {
-// //         div.append("p").text(`${key}: N/A`);
-// //       } else {
-// //         div.append("p").text(`${key}: ${value}`);
-// //       }    	
-// //     });
-
-
-// // //     //// Call some function to build chart
-// // 	});
-// }
-
+// Function to display world info in the panel
 function worldInfo() {
 	let panel = d3.select("#country-metadata");
 	panel.html("");
@@ -43,6 +14,7 @@ function worldInfo() {
 }
 
 
+// Function to display world info in the panel
 function countryInfo(country) {
 	let url = `/country_info/${country}`; 
 
