@@ -10,6 +10,11 @@ html {
 
 #panel-area {
 	padding-left: 0;
+	padding-right: 0;
+}
+
+#country {
+	margin-bottom: 20px;
 }
 
 #selCountry {
@@ -32,6 +37,7 @@ div.row {
 
 #map-area {
 	padding-right: 0;
+	padding-left: 0;
 	border: 1px solid blue;
 }
 
