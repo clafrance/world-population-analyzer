@@ -3,12 +3,13 @@ html {
   height: 500px;
 }
 
+
 #top-bar {
 	border: 1px solid gray;
 }
 
 #country {
-	margin-bottom: 20px;
+/*	margin-bottom: 20px;*/
 	border: 1px solid red;
 }
 
@@ -42,3 +43,4 @@ div.row {
 #map {
 	height: 500px;
 }
+

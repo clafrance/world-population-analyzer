@@ -5,13 +5,13 @@ function worldInfo() {
   panel.html("");
   let div = panel.append("div");
   div.append("span").attr("class", "world-info").text(`Total Population:`);
-  div.append("span").text(`5000000000`);
+  div.append("span").text(`7,383,009,000`);
 
   div.append("span").attr("class", "world-info").text(`Famale Population:`);
-  div.append("span").text(`500000000`);
+  div.append("span").text(`3,658,877,000`);
 
   div.append("span").attr("class", "world-info").text(`Male Population:`);
-  div.append("span").text(`500000000`);   
+  div.append("span").text(`3,724,132,000`);   
 }
 
 
