@@ -6,7 +6,7 @@ import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
+from sqlalchemy import create_engine
 
 
 from flask import Flask, jsonify, render_template
@@ -79,36 +79,50 @@ def years_list():
     df_all = pd.read_sql_query(stmt, db.session.bind)
     return jsonify(list(df_all.columns[3:]))
 
+@app.route("/populations_all_world")
+def populations():
+    """Return population for both  sex for given  region selection."""
+    stmt = db.session.query(Total_Population_Both_Sexes).filter(Total_Population_Both_Sexes.region_subregion_country_area == "WORLD").statement
+    df_all = pd.read_sql_query(stmt, db.session.bind)
+    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_new = df_all.transpose()
+    df_new.reset_index(level=0, inplace=True)
+    df_new.columns = ["Year","Population"]
+    return jsonify(df_new.to_dict(orient="records"))    
+
 @app.route("/population_all/<region>")
 def population_all(region):
     """Return population for both  sex for given  region selection."""
     stmt = db.session.query(Total_Population_Both_Sexes).filter(Total_Population_Both_Sexes.region_subregion_country_area == region).statement
     df_all = pd.read_sql_query(stmt, db.session.bind)
-    df_all = df_all.set_index("region_subregion_country_area", drop = True)
-    df_all.drop(columns = ['ID','country_code'],inplace=True)
-
-    return jsonify(df_all.T.to_dict('list'))
+    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_new = df_all.transpose()
+    df_new.reset_index(level=0, inplace=True)
+    df_new.columns = ["Year","Population"]
+    return jsonify(df_new.to_dict(orient="records"))
 
 @app.route("/population_male/<region>")
 def population_male(region):
     """Return population for both  sex for given  region selection."""
     stmt = db.session.query(Total_Population_Male).filter(Total_Population_Male.region_subregion_country_area == region).statement
     df_all = pd.read_sql_query(stmt, db.session.bind)
-    df_all = df_all.set_index("region_subregion_country_area", drop = True)
-    df_all.drop(columns = ['ID','country_code'],inplace=True)
-
-    return jsonify(df_all.T.to_dict('list')) 
+    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_new = df_all.transpose()
+    df_new.reset_index(level=0, inplace=True)
+    df_new.columns = ["Year","Population"]
+    return jsonify(df_new.to_dict(orient="records"))
 
 @app.route("/population_female/<region>")
 def population_female(region):
     """Return population for both  sex for given  region selection."""
     stmt = db.session.query(Total_Population_Female).filter(Total_Population_Female.region_subregion_country_area == region).statement
     df_all = pd.read_sql_query(stmt, db.session.bind)
-    df_all = df_all.set_index("region_subregion_country_area", drop = True)
-    df_all.drop(columns = ['ID','country_code'],inplace=True)
-
-    return jsonify(df_all.T.to_dict('list'))       
-
+    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_new = df_all.transpose()
+    df_new.reset_index(level=0, inplace=True)
+    df_new.columns = ["Year","Population"]
+    return jsonify(df_new.to_dict(orient="records"))
+    
 @app.route("/country_info/<country>")
 def country_info(country):
     """Return the country information for a given country"""
@@ -135,9 +149,6 @@ def country_info(country):
 
     # print(results)
     return jsonify(country_info)
-
-
-    
 
 
 if __name__ == "__main__":
