@@ -1,29 +1,32 @@
 // Function to display world info in the panel
+
 function worldInfo() {
-	let panel = d3.select("#country-metadata");
-	panel.html("");
-	let div = panel.append("div");
-	div.append("p").attr("class", "bold").text(`Total Population:`);
-	div.append("p").text(`1000000000`);
+  let panel = d3.select("#country-metadata");
+  panel.html("");
+  let div = panel.append("div");
+  div.append("span").attr("class", "world-info").text(`Total Population:`);
+  div.append("span").text(`5000000000`);
 
-	div.append("p").attr("class", "bold").text(`Female Population:`);
-	div.append("p").text(`500000000`);
+  div.append("span").attr("class", "world-info").text(`Famale Population:`);
+  div.append("span").text(`500000000`);
 
-	div.append("p").attr("class", "bold").text(`Male Population:`);
-	div.append("p").text(`500000000`);    
+  div.append("span").attr("class", "world-info").text(`Male Population:`);
+  div.append("span").text(`500000000`);   
 }
+
+
 
 
 // Function to display world info in the panel
 function countryInfo(country) {
-	let url = `/country_info/${country}`; 
+  let url = `/country_info/${country}`; 
 
-	d3.json(url).then(function(data) {
+  d3.json(url).then(function(data) {
 
-		// Select the panel with id of `#country-metadata`
-		let panel = d3.select("#country-metadata");
+    // Select the panel with id of `#country-metadata`
+    let panel = d3.select("#country-metadata");
 
-		// Clear any existing metadata
+    // Clear any existing metadata
     panel.html("");
 
     let div = panel.append("div");
@@ -31,18 +34,36 @@ function countryInfo(country) {
       if (!value) {
         div.append("p").text(`${key}: N/A`);
       } else {
-
-      	if (key ===  "Code") {
-      		div.append("p").attr("class", "bold").text(`Country ${key}:`);
-      	} else {
-      		div.append("p").attr("class", "bold").text(`${key}:`);
-      	}
-      	div.append("p").text(`${value}`);
-        // div.append("p").text(`${key}: ${value}`);
-      }    	
+        div.append("span").attr("class", "world-info").text(`${key}: `);
+        div.append("span").text(`${value}`);
+      }     
     });
-	});
+  });
 }
+
+
+// // Function to display world info in the panel
+// function countryInfo(country) {
+//   let url = `/country_info/${country}`; 
+
+//   d3.json(url).then(function(data) {
+
+//     // Select the panel with id of `#country-metadata`
+//     let panel = d3.select("#country-metadata");
+
+//     // Clear any existing metadata
+//     panel.html("");
+
+//     let div = panel.append("div");
+//     Object.entries(data).forEach(function([key, value]) {
+//       if (!value) {
+//         div.append("p").text(`${key}: N/A`);
+//       } else {
+//         div.append("p").text(`${key}: ${value}`);
+//       }     
+//     });
+//   });
+// }
 
 
 // Function to initilize the page

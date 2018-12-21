@@ -3,18 +3,18 @@ html {
   height: 500px;
 }
 
-/*.well {
-	width: 150px;
-	padding-bottom: 30px;
-}*/
-
-#panel-area {
-	padding-left: 0;
-	padding-right: 0;
+#top-bar {
+	border: 1px solid gray;
 }
 
 #country {
 	margin-bottom: 20px;
+	border: 1px solid red;
+}
+
+#country-metadata {
+	margin-top: 35px;
+	border: 1px solid green;
 }
 
 #selCountry {
@@ -22,12 +22,10 @@ html {
 	width: 105px;
 }
 
-#country-info {
-	width: 150px;
-}
-
-.bold {
+.world-info {
 	font-weight: bold;
+	margin-left: 15px;
+	margin-right: 5px;
 }
 
 div.row {

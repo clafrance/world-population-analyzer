@@ -31,22 +31,27 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-2" id="panel-area">
-        <div id="country">
-          <h5>Select Country:</h5>
-          <select id="selCountry" onchange="optionChanged(this.value)"></select>
-        </div>
 
-        <div class="panel panel-primary" id="country-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Country Info</h3>
-          </div>
-          <div id="country-metadata" class="panel-body"></div>
-        </div> 
+    <div class="row" id="top-bar">
+      <div class="col-md-2" id="year">
+        <h5>Select Year:</h5>
+ <!--        <select id="selCountry" onchange="optionChanged(this.value)"></select> -->
       </div>
 
-      <div class="col-md-10" id="map-area">
+      <div class="col-md-2" id="country">
+        <h5>Select Country:</h5>
+        <select id="selCountry" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-8 "  id="country-metadata"></div>
+
+<!--       <div class="col-md-8" id="country-details">
+        <div id="country-metadata" class="panel-body"></div>
+      </div> -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-12" id="map-area">
         <div id="map"></div>
       </div>
     </div>
