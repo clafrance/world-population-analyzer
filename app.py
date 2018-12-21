@@ -58,8 +58,8 @@ def index():
 
 
 
-@app.route("/countries")
-def countries():
+@app.route("/countries_old")
+def countries_old():
     """Return a list of countries."""
 
     stmt = db.session.query(Country_Continent).statement
@@ -69,6 +69,24 @@ def countries():
     country_list.insert(0, "WORLD")
 
     return jsonify(country_list)
+
+@app.route("/countries")
+def countries():
+    """Return a list of countries."""
+
+    stmt = db.session.query(Country_Continent).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+    country_list = list(df.iloc[:, 1])
+
+    country_list.insert(0, "WORLD")
+    years_bin = list(range(1950,2020,5))
+
+    dictA= {'countries':country_list,
+            
+             'years_bin' :years_bin
+    }
+    return jsonify(dictA)
+
 
 
 @app.route("/years_list")
@@ -90,38 +108,77 @@ def populations():
     df_new.columns = ["Year","Population"]
     return jsonify(df_new.to_dict(orient="records"))    
 
-@app.route("/population_all/<region>")
-def population_all(region):
+@app.route("/population_all/<country>")
+def population_all(country):
     """Return population for both  sex for given  region selection."""
-    stmt = db.session.query(Total_Population_Both_Sexes).filter(Total_Population_Both_Sexes.region_subregion_country_area == region).statement
-    df_all = pd.read_sql_query(stmt, db.session.bind)
-    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
-    df_new = df_all.transpose()
-    df_new.reset_index(level=0, inplace=True)
-    df_new.columns = ["Year","Population"]
-    return jsonify(df_new.to_dict(orient="records"))
+    #All Population
+    stmt = db.session.query(Total_Population_Both_Sexes).filter(Total_Population_Both_Sexes.region_subregion_country_area == country).statement
+    df_a = pd.read_sql_query(stmt, db.session.bind)
+    df_a.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_all= df_a.transpose()
+    df_all.reset_index(level=0, inplace=True)
+    df_all.columns = ["Year","A_Population"]
+    
+    #Female Population
+    stmt = db.session.query(Total_Population_Female).filter(Total_Population_Female.region_subregion_country_area == country).statement
+    df_f = pd.read_sql_query(stmt, db.session.bind)
+    df_f.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_f2 =df_f.transpose()
+    df_f2.reset_index(level=0, inplace=True)
+    df_f2.columns = ["Year","f_Population"]
+    
+    #male Population
+    stmt = db.session.query(Total_Population_Male).filter(Total_Population_Male.region_subregion_country_area == country).statement
+    df_m = pd.read_sql_query(stmt, db.session.bind)
+    df_m.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
+    df_m2 =df_m.transpose()
+    df_m2.reset_index(level=0, inplace=True)
+    df_m2.columns = ["Year","m_Population"]
+    
+    #merge together
 
-@app.route("/population_male/<region>")
-def population_male(region):
-    """Return population for both  sex for given  region selection."""
-    stmt = db.session.query(Total_Population_Male).filter(Total_Population_Male.region_subregion_country_area == region).statement
-    df_all = pd.read_sql_query(stmt, db.session.bind)
-    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
-    df_new = df_all.transpose()
-    df_new.reset_index(level=0, inplace=True)
-    df_new.columns = ["Year","Population"]
-    return jsonify(df_new.to_dict(orient="records"))
+    df_all =df_all.merge(df_m2, on='Year')
+    df_all =df_all.merge(df_f2, on='Year')
 
-@app.route("/population_female/<region>")
-def population_female(region):
+    return jsonify(df_all.to_dict(orient="records"))
+
+@app.route("/age_group/<country>/<year>")
+def age_group(country,year):
     """Return population for both  sex for given  region selection."""
-    stmt = db.session.query(Total_Population_Female).filter(Total_Population_Female.region_subregion_country_area == region).statement
-    df_all = pd.read_sql_query(stmt, db.session.bind)
-    df_all.drop(columns = ["region_subregion_country_area",'ID','country_code'],inplace=True)
-    df_new = df_all.transpose()
-    df_new.reset_index(level=0, inplace=True)
-    df_new.columns = ["Year","Population"]
-    return jsonify(df_new.to_dict(orient="records"))
+    #All Population
+    stmt = db.session.query(Population_By_Age_Both_Sexes).filter(Population_By_Age_Both_Sexes.reference_date == year)\
+        .filter(Population_By_Age_Both_Sexes.region_subregion_country_area == country).statement
+    df_a = pd.read_sql_query(stmt, db.session.bind)
+    df_a.drop(columns = ["region_subregion_country_area",'ID','country_code','reference_date'],inplace=True)
+    df_a2 =df_a.transpose()
+    df_a2.reset_index(level=0, inplace=True)
+    df_a2.columns = ["Age_Group","A_Population"]
+    
+    
+    #Female Population
+    stmt = db.session.query(Population_By_Age_Female).filter(Population_By_Age_Female.reference_date == year)\
+        .filter(Population_By_Age_Female.region_subregion_country_area == country).statement
+    df_f = pd.read_sql_query(stmt, db.session.bind)
+    df_f.drop(columns = ["region_subregion_country_area",'ID','country_code','reference_date'],inplace=True)
+    df_f2 =df_f.transpose()
+    df_f2.reset_index(level=0, inplace=True)
+    df_f2.columns = ["Age_Group","F_Population"]
+    
+    #male Population
+    stmt = db.session.query(Population_By_Age_Male).filter(Population_By_Age_Male.reference_date == year)\
+        .filter(Population_By_Age_Male.region_subregion_country_area == country).statement
+    df_m = pd.read_sql_query(stmt, db.session.bind)
+    df_m.drop(columns = ["region_subregion_country_area",'ID','country_code','reference_date'],inplace=True)
+    df_m2 =df_m.transpose()
+    df_m2.reset_index(level=0, inplace=True)
+    df_m2.columns = ["Age_Group","M_Population"]
+    
+    #merge together
+
+    df_bin =df_a2.merge(df_m2, on='Age_Group')
+    df_bin =df_bin.merge(df_f2, on='Age_Group')
+   
+    return jsonify(df_bin.to_dict(orient="records"))  
     
 @app.route("/country_info/<country>")
 def country_info(country):
