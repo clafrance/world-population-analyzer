@@ -5,7 +5,7 @@ var countries = [];
 
 
 var myMap = L.map("map", {
-  center: [39.91, -77.02],
+  center: [38.7223, -9.1393],
   zoom: 3
 });
 
@@ -17,6 +17,30 @@ L.tileLayer(`https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
   id: "mapbox.streets",
   accessToken: API_KEY
 }).addTo(myMap);
+
+
+
+function chooseColor(population) {
+  if (population > 100000) {
+    return "red"
+  } else if (population > 50000) {
+    return "pink";
+  } else if (population > 30000) {
+    return "orange";
+  } else if (population > 10000) {
+    return "yellow";
+  } else if (population > 2500) {
+    return "green";
+  } else if (population > 500) {
+    return "lightgreen";
+  } else {
+    return "blue";
+  };
+}
+
+function markerSize() {
+  return 200000;
+}
 
 function mapPlot(year) {
 
@@ -37,17 +61,12 @@ function mapPlot(year) {
       countries.push(temp_dict);
     });
 
-
-    function markerSize() {
-      return 100000;
-    }
-
     for (var i = 0; i < countries.length; i++) {
       L.circle(countries[i].location, {
         fillOpacity: 0.75,
-        color: "red",
-        fillColor: "red",
-        radius: 100000
+        color: chooseColor(countries[i].population) ,
+        fillColor: chooseColor(countries[i].population) ,
+        radius: markerSize()
       }).bindPopup("<h2>" + countries[i].name + "</h2> <hr> <h4>Population: " + countries[i].population + " (k)</h4>").addTo(myMap);
     }
   

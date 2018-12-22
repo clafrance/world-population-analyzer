@@ -5,17 +5,15 @@ html {
 
 
 #top-bar {
-	border: 1px solid gray;
+/*	border: 1px solid gray;*/
 }
 
 #country {
 /*	margin-bottom: 20px;*/
-	border: 1px solid red;
 }
 
 #country-metadata {
 	margin-top: 35px;
-	border: 1px solid green;
 }
 
 #selCountry {
@@ -31,16 +29,49 @@ html {
 
 div.row {
 	margin-top: 30px;
-	border: 1px solid red;
+/*	border: 1px solid red;*/
 }
 
 #map-area {
 	padding-right: 0;
 	padding-left: 0;
-	border: 1px solid blue;
+/*	border: 1px solid blue;*/
 }
 
 #map {
 	height: 500px;
+}
+
+#population-map {
+	text-align: center;
+}
+
+
+#red {
+	color: red;
+}
+
+#orange {
+	color: orange;
+}
+
+#pink {
+	color: pink;
+}
+
+#yellow {
+	color: yellow;
+}
+
+#green {
+	color: green;
+}
+
+#lightgreen {
+	color: lightgreen;
+}
+
+#blue {
+	color: blue;
 }
 
