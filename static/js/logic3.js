@@ -25,13 +25,13 @@ function chooseColor(population) {
     return "red"
   } else if (population > 50000) {
     return "pink";
-  } else if (population > 30000) {
+  } else if (population > 20000) {
     return "orange";
-  } else if (population > 10000) {
-    return "yellow";
-  } else if (population > 2500) {
-    return "green";
+  } else if (population > 5000) {
+    return "purple";
   } else if (population > 500) {
+    return "green";
+  } else if (population > 100) {
     return "lightgreen";
   } else {
     return "blue";
