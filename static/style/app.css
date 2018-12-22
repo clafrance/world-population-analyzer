@@ -38,10 +38,21 @@ div.row {
 /*	border: 1px solid blue;*/
 }
 
-#map {
+#map-area {
 	height: 500px;
 }
 
+
+#map {
+	height: 100%;
+}
+
+
+
+/*#map {
+	height: 500px;
+}
+*/
 #population-map {
 	text-align: center;
 }
