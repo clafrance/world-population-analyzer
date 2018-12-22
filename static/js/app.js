@@ -196,7 +196,9 @@ function init() {
 	
 		});
 		// Use the first country from the list to build the initial plots
-    const world = countries[0];
+    const world = data.countries[0];
+    // const world = countries[0];
+    mapPlot(1950);
     worldInfo();
     populationPlot("WORLD")
 		agePlot("WORLD",2015)
@@ -219,8 +221,13 @@ function optionChanged(newCountry) {
 		populationPlot(newCountry);
 		agePlot(newCountry,2010)
   }
-
 }
+
+// Function to build new charts when select a country
+function optionChangedYear(year) {
+  mapPlot(year);
+}
+
 
 
 init();

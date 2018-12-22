@@ -13,7 +13,7 @@ Aruba,ABW,533,North America,Oranjestad,12.32,-70.02
 Australia,AUS,36,Oceania/Australia,Canberra,-35.15,149.08
 Austria,AUT,40,Europe,Vienna,48.12,16.22
 Azerbaijan,AZE,31,Asia,Baku,40.29,49.56
-"Bahamas, The",BHS,44,North America,Nassau,25.05,-77.02
+Bahamas,BHS,44,North America,Nassau,25.05,-77.02
 Bahrain,BHR,48,Asia,Manama,26.1,50.3
 Bangladesh,BGD,50,Asia,Dhaka,23.43,90.26
 Barbados,BRB,52,North America,Bridgetown,13.05,-59.3
@@ -23,7 +23,7 @@ Belize,BLZ,84,North America,Belmopan,17.18,-88.3
 Benin,BEN,204,Africa,Porto-Novo,6.23,2.42
 Bermuda,BMU,60,North America,Hamilton,32.3,-64.75
 Bhutan,BTN,64,Asia,Thimphu,27.31,89.45
-Bolivia,BOL,68,South America,Sucre,-16.2,-68.1
+Bolivia (Plurinational State of),BOL,68,South America,Sucre,-16.2,-68.1
 Bosnia and Herzegovina,BIH,70,Europe,Sarajevo,43.52,18.26
 Botswana,BWA,72,Africa,Gaborone,-24.45,25.57
 Brazil,BRA,76,South America,Brasilia,-15.47,-47.55
@@ -32,10 +32,11 @@ Brunei Darussalam,BRN,96,Asia,Bandar Seri Begawan,4.52,115
 Bulgaria,BGR,100,Europe,Sofia,42.45,23.2
 Burkina Faso,BFA,854,Africa,Ouagadougou,12.5,-1.3
 Burundi,BDI,108,Africa,Bujumbura,-3.16,29.18
-Cape Verde,CPV,132,Africa,Praia,15.2,-23.34
+Cabo Verde,CPV,132,Africa,Praia,15.2,-23.34
 Cambodia,KHM,116,Asia,Phnom Penh,11.33,104.55
 Cameroon,CMR,120,Africa,Yaounde,3.5,11.35
 Canada,CAN,124,North America,Ottawa,45.27,-75.42
+Caribbean,,915,North America,Santo Domingo,18.48,-69.93
 Caribbean Netherlands,BES,535,South America,Kralendijk,12.2,-68.26
 Cayman Islands,CYM,136,North America,George Town,19.2,-81.24
 Central African Republic,CAF,140,Africa,Bangui,4.23,18.35
@@ -43,38 +44,42 @@ Chad,TCD,148,Africa,N'Djamena,12.1,14.59
 Channel Islands,CHI,830,Europe,Saint Peter Port,49.45,-2.54
 Chile,CHL,152,South America,Santiago,-33.24,-70.4
 China,CHN,156,Asia,Beijing,39.55,116.2
+"China, Hong Kong SAR",HKG,344,Asia,Hong Kong,22.39,114.1
+"China, Macao SAR",MAC,446,Asia,Macau,22.12,113.33
+"China, Taiwan Province of China",TWN,158,Asia,Taipei,23.69,120.96
 Colombia,COL,170,South America,Bogota,4.34,-74
 Comoros,COM,174,Africa,Moroni,-11.4,43.16
-"Congo, Dem. Rep.",COD,180,Africa,Kinshasa,-4.44,15.26
-"Congo, Rep.",COG,178,Africa,Brazzaville,-4.09,15.12
+Congo,COG,178,Africa,Brazzaville,-4.09,15.12
 Cook Islands,COK,184,,Avarua,-21.23,-159.77
 Costa Rica,CRI,188,North America,San Jose,9.55,-84.02
-Cote d'Ivoire,CIV,384,Africa,Yanoussoukro,6.49,-5.17
 Croatia,HRV,191,Europe,Zagreb,45.5,15.58
 Cuba,CUB,192,North America,Havana,23.08,-82.22
 Curacao,CUW,531,North America,Willemstad,12.12,-68.88
 Cyprus,CYP,196,Asia,Nicosia,35.1,33.25
-Czechia Republic,CZE,203,Europe,Prague,50.05,14.22
+Czechia,CZE,203,Europe,Prague,50.05,14.22
+Côte d'Ivoire,CIV,384,Africa,Yanoussoukro,6.49,-5.17
+Dem. People's Republic of Korea,PRK,408,Asia,Pyongyang,39.09,125.3
+Democratic Republic of the Congo,COD,180,Africa,Kinshasa,-4.44,15.26
 Denmark,DNK,208,Europe,Copenhagen,55.41,12.34
 Djibouti,DJI,262,Africa,Djibouti,11.08,42.2
 Dominica,DMA,212,North America,Roseau,15.3,-61.38
 Dominican Republic,DOM,214,North America,Santo Domingo,18.48,-69.31
 Ecuador,ECU,218,South America,Quito,-0.15,-78.35
-"Egypt, Arab Rep.",EGY,818,Africa,Cairo,30.01,31.14
+Egypt,EGY,818,Africa,Cairo,30.01,31.14
 El Salvador,SLV,222,North America,San Salvador,13.4,-89.1
 Equatorial Guinea,GNQ,226,Africa,Malabo,3.45,8.5
 Eritrea,ERI,232,Africa,Asmara,15.19,38.55
 Estonia,EST,233,Europe,Tallinn,59.22,24.48
 Ethiopia,ETH,231,Africa,Addis Ababa,9.02,38.42
-Falkland Islands,FLK,238,South America,Stanley,-51.4,-59.1
-Faroe Islands,FRO,234,Europe,Torshavn,62.06,-6.56
+Faeroe Islands,FRO,234,Europe,Torshavn,62.06,-6.56
+Falkland Islands (Malvinas),FLK,238,South America,Stanley,-51.4,-59.1
 Fiji,FJI,242,Oceania/Australia,Suva,-18.06,178.3
 Finland,FIN,246,Europe,Helsinki,60.15,25.3
 France,FRA,250,Europe,Paris,48.5,2.2
 Franch Guiana,GUF,254,South America,Cayenne,5.05,-52.18
 French Polynesia,PYF,258,Oceania/Australia,Papeete,-17.32,-149.34
 Gabon,GAB,266,Africa,Libreville,0.25,9.26
-"Gambia, The",GMB,270,Africa,Banjul,13.28,-16.4
+Gambia,GMB,270,Africa,Banjul,13.28,-16.4
 Georgia,GEO,268,Asia,Tbilisi,41.43,44.5
 Germany,DEU,276,Europe,Berlin,52.3,13.25
 Ghana,GHA,288,Africa,Accra,5.35,31.13
@@ -82,22 +87,20 @@ Gibraltar,GIB,292,Europe,Gibraltar,36.14,-5.35
 Greece,GRC,300,Europe,Athens,37.58,23.46
 Greenland,GRL,304,North America,Nuuk,64.1,-51.35
 Grenada,GRD,308,North America,St. George's,12.05,-61.74
-Guam,GUM,316,Oceania/Australia,Hagatna,13.47,144.75
 Guadeloupe,GLP,312,North America,Basse-Terre,16,-61.44
+Guam,GUM,316,Oceania/Australia,Hagatna,13.47,144.75
 Guatemala,GTM,320,North America,Guatemala City,14.4,-90.22
-Guernsey,GGY,831,Europe,St. Peter Port,49.26,-2.33
 Guinea,GIN,324,Africa,Conakry,9.29,-13.49
 Guinea-Bissau,GNB,624,Africa,Bissau,11.45,-15.45
 Guyana,GUY,328,South America,Georgetown,6.5,-58.12
 Haiti,HTI,332,North America,Port-au-Prince,18.4,-72.2
 Holy See,VAT,336,Europe,Vatican City,41.9,12.45
 Honduras,HND,340,North America,Tegucigalpa,14.05,-87.14
-"Hong Kong SAR, China",HKG,344,Asia,Hong Kong,22.39,114.1
 Hungary,HUN,348,Europe,Budapest,47.29,19.05
 Iceland,ISL,352,Europe,Reykjavik,64.1,-21.57
 India,IND,356,Asia,New Delhi,28.37,77.13
 Indonesia,IDN,360,Asia,Jakarta,-6.09,106.49
-"Iran, Islamic Rep.",IRN,364,Asia,Tehran,35.44,51.3
+Iran (Islamic Republic of),IRN,364,Asia,Tehran,35.44,51.3
 Iraq,IRQ,368,Asia,Baghdad,33.2,44.3
 Ireland,IRL,372,Europe,Dublin,53.21,-6.15
 Isle of Man,IMN,833,Europe,Douglas,31.34,-109.54
@@ -109,11 +112,9 @@ Jordan,JOR,400,Asia,Amman,31.57,35.52
 Kazakhstan,KAZ,398,Asia,Astana,51.1,71.3
 Kenya,KEN,404,Africa,Nairobi,-1.17,36.48
 Kiribati,KIR,296,Oceania/Australia,Tarawa,1.3,173
-"Korea, Dem. People’s Rep.",PRK,408,Asia,Pyongyang,39.09,125.3
-"Korea, Rep.",KOR,410,Asia,Seoul,37.31,126.58
 Kuwait,KWT,414,Asia,Kuwait,29.3,48
 Kyrgyzstan,KGZ,417,Asia,Bishkek,42.54,74.46
-Lao PDR,LAO,418,Asia,Vientiane,17.58,102.36
+Lao People's Democratic Republic,LAO,418,Asia,Vientiane,17.58,102.36
 Latvia,LVA,428,Europe,Riga,56.53,24.08
 Lebanon,LBN,422,Asia,Beirut,33.53,35.31
 Lesotho,LSO,426,Africa,Maseru,-29.18,27.3
@@ -122,8 +123,6 @@ Libya,LBY,434,Africa,Tripoli,32.49,13.07
 Liechtenstein,LIE,438,Europe,Vaduz,47.08,9.31
 Lithuania,LTU,440,Europe,Vilnlus,54.38,25.19
 Luxembourg,LUX,442,Europe,Luxembourg City,49.37,6.09
-"Macao SAR, China",MAC,446,Asia,Macau,22.12,113.33
-"Macedonia, FYR",MKD,807,Europe,Skopje,42.01,21.26
 Madagascar,MDG,450,Africa,Antananrivo,-18.55,47.31
 Malawi,MWI,454,Africa,Lilongwe,-14,33.48
 Malaysia,MYS,458,Asia,Kuala Lumpur,3.09,101.41
@@ -136,8 +135,8 @@ Mauritania,MRT,478,Africa,Nouakchott,-20.1,57.3
 Mauritius,MUS,480,Africa,Port Louis,-20.16,57.5
 Mayotte,MLT,175,Europe,Mamoudzou-12.82,-12.82,45.16
 Mexico,MEX,484,North America,Mexico City,19.2,-99.1
-"Micronesia, Fed. Sts.",FSM,583,Australia/Oceania,Palikir,6.55,158.09
-Moldova,MDA,498,Europe,Chisinau,47.02,28.5
+Micronesia,FSM,954,Oceania/Australia,Palikir,6.55,158.09
+Micronesia (Fed. States of),FSM,583,Australia/Oceania,Palikir,6.55,158.09
 Monaco,MCO,492,Europe,Monaco,43.73,7.42
 Mongolia,MNG,496,Asia,Ulaanbaatar,47.88,106.9
 Montenegro,MNE,499,Europe,Podgorica,42.43,19.25
@@ -166,15 +165,22 @@ Paraguay,PRY,600,South America,Asuncion,-25.1,-57.3
 Peru,PER,604,South America,Lima,-12,-77
 Philippines,PHL,608,Asia,Manila,14.4,121.03
 Poland,POL,616,Europe,Warsaw,52.13,21
+Polynesia,PYF,957,Oceania/Australia,Papeete,-17.67,-149.4
 Portugal,PRT,620,Europe,Lisbon,38.42,-9.1
 Puerto Rico,PRI,630,North America,San Juan,18.28,-66.07
 Qatar,QAT,634,Asia,Doha,25.15,51.35
-Reunion,REU,638,Africa,Saint-Denis,-20.89,55.45
+Republic of Korea,KOR,410,Asia,Seoul,37.31,126.58
+Republic of Moldova,MDA,498,Europe,Chisinau,47.02,28.5
 Romania,ROU,642,Europe,Bucharest,44.27,26.1
 Russian Federation,RUS,643,Europe,Moscow,55.45,37.35
 Rwanda,RWA,646,Africa,Kigali,-1.59,30.04
-Samoa,WSM,882,Oceania/Australia,Apia,-13.5,-171.5
+Réunion,REU,638,Africa,Saint-Denis,-20.89,55.45
+Saint Helena,SHN,654,Africa,Jamestown,-15.92,-5.71
+Saint Kitts and Nevis,KNA,659,North America,Basseterre,17.3,-62.71
+Saint Lucia,LCA,662,North America,Castries,14.01,-60.98
 Saint Pierre and Miquelon,SPM,666,North America,Saint-Pierre,46.88,-56.31
+Saint Vincent and the Grenadines,VCT,670,North America,Kingstown,12.98,-61.28
+Samoa,WSM,882,Oceania/Australia,Apia,-13.5,-171.5
 San Marino,SMR,674,Europe,San Marino,43.55,12.3
 Sao Tome and Principe,STP,678,Africa,Sao Tome,0.1,6.39
 Saudi Arabia,SAU,682,Asia,Riyadh,24.41,46.42
@@ -184,7 +190,7 @@ Seychelles,SYC,690,Africa,Victoria,48.42,-123.36
 Sierra Leone,SLE,694,Africa,Freetown,8.34,-13.17
 Singapore,SGP,702,Asia,Singapore,1.35,103.81
 Sint Maarten (Dutch part),SXM,534,North America,Philipsburg,18.02,-63.04
-Slovak Republic,SVK,703,Europe,Bratislava,48.1,17.07
+Slovakia,SVK,703,Europe,Bratislava,48.1,17.07
 Slovenia,SVN,705,Europe,Ljubijana,46.04,14.33
 Solomon Islands,SLB,90,Oceania/Australia,Honiara,-9.27,159.57
 Somalia,SOM,706,Africa,Mogadishu,2.02,45.25
@@ -192,22 +198,15 @@ South Africa,ZAF,710,Africa,Pretoria,-25.44,28.12
 South Sudan,SSD,728,Africa,Juba,4.85,31.57
 Spain,ESP,724,Europe,Madrid,40.25,-3.45
 Sri Lanka,LKA,144,Asia,Colombo,6.92,79.86
-St. Helena,SHN,654,Africa,Jamestown,-15.92,-5.71
-Sri Lanka,LKA,144,Asia,Sri Jayawardenapura Kotte,6.88,79.91
-St. Kitts and Nevis,KNA,659,North America,Basseterre,17.3,-62.71
-St. Lucia,LCA,662,North America,Castries,14.01,-60.98
-St. Martin (French part),MAF,663,North America,Marigot,18.06,-63.08
-St. Vincent and the Grenadines,VCT,670,North America,Kingstown,12.98,-61.28
-State of Paltetine,PSE,275,Asia,Ramallah,31.95,35.23
+State of Palestine,PSE,275,Asia,Ramallah,31.95,35.23
 Sudan,SDN,729,Africa,Khartoum,15.31,32.35
 Suriname,SUR,740,South America,Paramaribo,5.5,-55.1
 Swaziland,SWZ,748,Africa,Mbabane,-26.18,31.06
 Sweden,SWE,752,Europe,Stockholm,59.2,18.03
 Switzerland,CHE,756,Europe,Bern,46.57,7.28
 Syrian Arab Republic,SYR,760,Asia,Damascus,33.3,36.18
-Taiwan,TWN,158,Asia,Taipei,23.69,120.96
+TFYR Macedonia,MKD,807,Europe,Skopje,42.01,21.26
 Tajikistan,TJK,762,Asia,Dushanbe,38.33,68.48
-Tanzania,TZA,834,Africa,Dodoma,-6.36,34.88
 Thailand,THA,764,Asia,Bangkok,13.45,100.35
 Timor-Leste,TLS,626,Asia,Dili,-8.29,125.34
 Togo,TGO,768,Africa,Lome,6.09,1.2
@@ -223,15 +222,16 @@ Uganda,UGA,800,Africa,Kampala,0.2,32.3
 Ukraine,UKR,804,Europe,Kyiv,50.3,30.28
 United Arab Emirates,ARE,784,Asia,Abu Dhabi,24.28,54.22
 United Kingdom,GBR,826,Europe,London,51.36,-0.05
-United States,USA,840,North America,Washington DC,39.91,-77.02
+United Republic of Tanzania,TZA,834,Africa,Dodoma,-6.36,34.88
+United States Virgin Islands,VIR,850,North America,Charlotte Amalia,18.21,-64.56
+United States of America,USA,840,North America,Washington DC,39.91,-77.02
 Uruguay,URY,858,South America,Montevideo,-34.5,-56.11
 Uzbekistan,UZB,860,Asia,Tashkent,41.2,69.1
 Vanuatu,VUT,548,Oceania/Australia,Port Vila,-17.45,168.18
-"Venezuela, RB",VEN,862,South America,Caracas,10.3,-66.55
-Vietnam,VNM,704,Asia,Hanoi,21.05,105.55
-Virgin Islands (U.S.),VIR,850,North America,Charlotte Amalia,18.21,-64.56
+Venezuela (Bolivarian Republic of),VEN,862,South America,Caracas,10.3,-66.55
+Viet Nam,VNM,704,Asia,Hanoi,21.05,105.55
 Wallis and Futuna Islands,WLF,876,Oceania/Australia,Mata Utu,-14.29,-178.11
 Western Sahara,ESH,732,Africa,Tifariti,24.21,-12.88
-"Yemen, Rep.",YEM,887,Asia,Sana'a,1.36,44.19
+Yemen,YEM,887,Asia,Sana'a,1.36,44.19
 Zambia,ZMB,894,Africa,Lusaka,-15.28,28.16
 Zimbabwe,ZWE,716,Africa,Harare,-17.43,31.02

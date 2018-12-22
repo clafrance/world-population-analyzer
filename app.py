@@ -208,5 +208,45 @@ def country_info(country):
     return jsonify(country_info)
 
 
+
+@app.route("/total_population_by_year/<year>")
+def total_population_by_year(year):
+    stmt1 = db.session.query(Total_Population_Both_Sexes).statement
+    df_total_population = pd.read_sql_query(stmt1, db.session.bind)
+    # list of countries:
+    stmt2 = db.session.query(Country_Continent).statement
+    df = pd.read_sql_query(stmt2, db.session.bind)
+
+    list_of_countries = list(df.iloc[:, 1])
+    list_of_capitals = list(df.iloc[:, 5])
+    list_of_latitudes = list(df.iloc[:, 6])
+    list_of_longitudes = list(df.iloc[:, 7])
+
+    list_of_country_codes = df.iloc[:, 3]
+    country_code_df = list_of_country_codes.to_frame(name='country_code')
+    df_merged = country_code_df.merge(df_total_population, left_on='country_code', right_on='country_code', how='inner')
+    # df_merged.drop(columns=['ID', 'region_subregion_country_area', 'country_code'], inplace=True)
+    df_merged.drop(columns=['ID', 'region_subregion_country_area'], inplace=True)
+
+    df_merged_new = df_merged.transpose()
+    df_merged_new.index.name = 'year'
+    populations_orderby_contries_index = list(df_merged_new.loc[year])
+
+    result = [{"country": list_of_countries,
+            "population": populations_orderby_contries_index,
+            "latitude": list_of_latitudes,
+            "longitude": list_of_longitudes,
+            "capital": list_of_capitals}]
+
+    # for i in range(len(list_of_countries)):
+    #     temp_dict = {"name": list_of_countries[i],
+    #         "capital": list_of_capitals[i], 
+    #         "location": [list_of_latitudes[i], list_of_longitudes[i]],
+    #         "population": populations_orderby_contries_index[i]}
+    #     result.append(temp_dict)
+
+    return jsonify(result)
+
+
 if __name__ == "__main__":
     app.run()
