@@ -14,18 +14,13 @@ html {
 }
 
 #country-metadata {
-	margin-top: 36px;
+	margin-top: 35px;
+	border: 1px solid green;
+}
 
-}
-#selYear {
-	display: block;
-	width: 105px;
-	background-color:rgb(226, 140, 11);
-}
 #selCountry {
 	display: block;
 	width: 105px;
-	background-color:rgb(226, 140, 11);
 }
 
 .world-info {
@@ -34,18 +29,18 @@ html {
 	margin-right: 5px;
 }
 
-
+div.row {
+	margin-top: 30px;
+	border: 1px solid red;
+}
 
 #map-area {
-	padding-right: 10;
-	padding-left: 10;
-	
+	padding-right: 0;
+	padding-left: 0;
+	border: 1px solid blue;
 }
 
 #map {
 	height: 500px;
 }
 
-body {
-	background-color:white
-	}

@@ -66,7 +66,7 @@ function populationPlot(country) {
       yaxis: {
         autorange: true,
 				type: "linear",
-				title: "Population numbers (in Thousands)"
+				title: "Population numbers"
       }
     };
 		
@@ -115,17 +115,9 @@ function agePlot(country,year) {
 
 		var layout = {
 			barmode: 'stack',
-      title: "Population by Age Group",
-      xaxis: {
-			
-				title: "Age Group"
-      },
-      yaxis: {
-        autorange: true,
-			
-				title: "Population numbers (in Thousands)"
-      }
+			title: "Population by Age Group",
 		};
+		
 
     Plotly.newPlot("population-stack", data, layout);
   });
