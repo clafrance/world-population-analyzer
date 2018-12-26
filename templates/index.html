@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="row float-left margin-bottom-20" id="top-bar">
+      <div class="row margin-bottom-20" id="top-bar">
         <div class="col-md-2" id="year">
           <h5>Select Year:</h5>
           <select id="selYear" onchange="optionChangedYear(this.value)"></select></span>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="container-fluid chart-area">
-    <div class="row margin-bottom-20" id="chart-area1">    
+    <div class="row margin-bottom-20 border-gray" id="chart-area1">    
       <div class="col-md-6">
         <div id="population-line"></div>
       </div>
@@ -57,9 +57,9 @@
       </div>
     </div>
 
-    <div class="row margin-bottom-20" id="map-area"><br>
+    <div class="row margin-bottom-20 border-gray" id="map-area"><br>
       <h3 id="population-map">World Population Map</h3><br>
-      <h4 id="population-indicator">Population:
+      <h4 class="text-center" id="population-indicator">Population:
         <span id="red"><b>Over 100 million</b></span>
         <span id="pink"><b> | Over 50 million</b></span>
         <span id="orange"><b> | Over 20 million</b></span>
@@ -71,7 +71,7 @@
       <div class="col-md-12" id="map"></div>
     </div>
 
-    <div class="row margin-bottom-20" id="chart-area2">    
+    <div class="row margin-bottom-20 border-gray" id="chart-area2">    
       <div class="col-md-6">Top 10 populated country vs world population Pie Chart3
         <div id="population-line"></div>
       </div>
@@ -80,8 +80,7 @@
         <div id="population-stack"></div>
       </div>
     </div>
-
-    <div class="row margin-bottom-20" id="chart-area2">    
+    <div class="row margin-bottom-20 border-gray" id="chart-area2">    
       <div class="col-md-6">World Populaytion Change Rate line Chart1
         <div id="population-line"></div>
       </div>

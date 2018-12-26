@@ -16,7 +16,7 @@ body {
 	margin-bottom: 20px;
 }
 
-.row {
+.border-gray {
 	border: 1px solid gray;
 }
 
@@ -25,7 +25,8 @@ body {
 }
 
 #title {
-	margin-bottom: 16px;
+	padding-bottom: 16px;
+	background-color: rgb(226, 140, 11);
 }
 
 .chart-area {
@@ -72,6 +73,10 @@ footer .row {
 	margin-top: 120px;
 	height: 500px;
 } 
+
+.text-center {
+	text-align: center;
+}
 
 #map-area {
 	height: 100%;
