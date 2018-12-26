@@ -20,6 +20,10 @@ body {
 	border: 1px solid gray;
 }
 
+.navbar-fixed-top {
+	overflow: auto;
+}
+
 #title-area {
 	background-color: rgb(226, 140, 11);
 }
@@ -30,7 +34,9 @@ body {
 }
 
 .chart-area {
-	margin-top: 220px;
+	margin-top: 205px;
+	position: relative;
+	clear: left;
 }
 
 #top-bar {
@@ -72,6 +78,7 @@ footer .row {
 .chart-area1 {
 	margin-top: 120px;
 	height: 500px;
+	max-height: 500px;
 } 
 
 .text-center {
