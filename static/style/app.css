@@ -4,7 +4,7 @@ html {
 }
 
 body {
-	background-color:white
+	background-color: white
 }
 
 .container-fluid {
@@ -52,13 +52,16 @@ body {
 	margin-right: 5px;
 }
 
-/*.float-left {
-	float:left;
+footer {
+	background-color: rgb(226, 140, 11);
+}
+
+/*footer .row {
+	padding-top: 10px;
 }*/
 
 div.row {
-	margin-bottom: 30px;
-	border: 1px solid grey;
+	margin-bottom: 40px;
 }
 
 .chart-area1 {
