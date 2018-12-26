@@ -8,12 +8,10 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 
-
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 import load_data
-
 
 
 app = Flask(__name__)
@@ -55,7 +53,6 @@ def index():
     """Return the homepage."""
 
     return render_template("index.html")
-
 
 
 @app.route("/countries_old")
@@ -208,11 +205,17 @@ def country_info(country):
     return jsonify(country_info)
 
 
-
 @app.route("/total_population_by_year/<year>")
 def total_population_by_year(year):
     stmt1 = db.session.query(Total_Population_Both_Sexes).statement
     df_total_population = pd.read_sql_query(stmt1, db.session.bind)
+
+    stmt3 = db.session.query(Total_Population_Male).statement
+    df_male_population = pd.read_sql_query(stmt3, db.session.bind)
+
+    stmt4 = db.session.query(Total_Population_Female).statement
+    df_female_population = pd.read_sql_query(stmt4, db.session.bind)
+
     # list of countries:
     stmt2 = db.session.query(Country_Continent).statement
     df = pd.read_sql_query(stmt2, db.session.bind)
@@ -221,31 +224,48 @@ def total_population_by_year(year):
     list_of_capitals = list(df.iloc[:, 5])
     list_of_latitudes = list(df.iloc[:, 6])
     list_of_longitudes = list(df.iloc[:, 7])
+    list_of_country_codes = list(df.iloc[:, 3])
 
-    list_of_country_codes = df.iloc[:, 3]
-    country_code_df = list_of_country_codes.to_frame(name='country_code')
+    list_of_countries.insert(0, "WORLD")
+    list_of_capitals.insert(0, "")
+    list_of_latitudes.insert(0, "")
+    list_of_longitudes.insert(0, "")
+    list_of_country_codes.insert(0, 900)
+    country_code_series = pd.Series(list_of_country_codes)
+    country_code_df = country_code_series.to_frame(name='country_code')
+
     df_merged = country_code_df.merge(df_total_population, left_on='country_code', right_on='country_code', how='inner')
-    # df_merged.drop(columns=['ID', 'region_subregion_country_area', 'country_code'], inplace=True)
     df_merged.drop(columns=['ID', 'region_subregion_country_area'], inplace=True)
+
+    df_merged_male = country_code_df.merge(df_male_population, left_on='country_code', right_on='country_code', how='inner')
+    df_merged_male.drop(columns=['ID', 'region_subregion_country_area'], inplace=True)
+
+    df_merged_female = country_code_df.merge(df_female_population, left_on='country_code', right_on='country_code', how='inner')
+    df_merged_female.drop(columns=['ID', 'region_subregion_country_area'], inplace=True)
 
     df_merged_new = df_merged.transpose()
     df_merged_new.index.name = 'year'
     populations_orderby_contries_index = list(df_merged_new.loc[year])
 
+    df_merged_male_new = df_merged_male.transpose()
+    df_merged_male_new.index.name = 'year'
+    male_populations_orderby_contries_index = list(df_merged_male_new.loc[year])
+
+    df_merged_female_new = df_merged_female.transpose()
+    df_merged_female_new.index.name = 'year'
+    female_populations_orderby_contries_index = list(df_merged_female_new.loc[year])
+
+
     result = [{"country": list_of_countries,
             "population": populations_orderby_contries_index,
+            "male_population": male_populations_orderby_contries_index,
+            "female_population": female_populations_orderby_contries_index,
             "latitude": list_of_latitudes,
             "longitude": list_of_longitudes,
             "capital": list_of_capitals}]
 
-    # for i in range(len(list_of_countries)):
-    #     temp_dict = {"name": list_of_countries[i],
-    #         "capital": list_of_capitals[i], 
-    #         "location": [list_of_latitudes[i], list_of_longitudes[i]],
-    #         "population": populations_orderby_contries_index[i]}
-    #     result.append(temp_dict)
-
     return jsonify(result)
+
 
 @app.route("/top_ten_total_population_by_year/<year>")
 def top_ten_total_population_by_year(year):
@@ -285,6 +305,17 @@ def top_ten_total_population_by_year(year):
     return jsonify(result)
 
 
+# @app.route("/world_total_population_by_year/<year>")
+# def world_total_population_by_year(year):
+
+
+
+# @app.route("/world_male_population_by_year/<year>")
+# def world_male_population_by_year(year):
+
+
+# @app.route("/world_female_population_by_year/<year>")
+# def world_female_population_by_year(year):
 
 
 
