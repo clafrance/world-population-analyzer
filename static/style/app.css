@@ -1,24 +1,49 @@
 body,
 html {
-  height: 500px;
+  height: 100%;
 }
 
+body {
+	background-color:white
+}
+
+.container-fluid {
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+#title-area {
+	background-color: rgb(226, 140, 11);
+}
+
+#title {
+	margin-bottom: 16px;
+}
+
+.chart-area {
+	margin-top: 215px;
+}
 
 #top-bar {
-/*	border: 1px solid gray;*/
-}
-
-#country {
-/*	margin-bottom: 20px;*/
+	margin-left: 50px;
+	margin-right: 50px;
+	border: 1px solid gray;
 }
 
 #country-metadata {
-	margin-top: 35px;
+	margin-top: 36px;
+}
+
+#selYear {
+	display: block;
+	width: 105px;
+	background-color:rgb(226, 140, 11);
 }
 
 #selCountry {
 	display: block;
 	width: 105px;
+	background-color:rgb(226, 140, 11);
 }
 
 .world-info {
@@ -27,32 +52,28 @@ html {
 	margin-right: 5px;
 }
 
+/*.float-left {
+	float:left;
+}*/
+
 div.row {
-	margin-top: 30px;
-/*	border: 1px solid red;*/
+	margin-bottom: 30px;
+	border: 1px solid grey;
 }
 
-#map-area {
-	padding-right: 0;
-	padding-left: 0;
-/*	border: 1px solid blue;*/
-}
-
-#map-area {
+.chart-area1 {
+	margin-top: 100px;
 	height: 500px;
-}
+} 
 
-
-#map {
+#map-area {
 	height: 100%;
 }
 
-
-
-/*#map {
-	height: 500px;
+#map {
+	height: 550px;
 }
-*/
+
 #population-map {
 	text-align: center;
 }

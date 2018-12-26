@@ -22,44 +22,42 @@
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center"> 
-        <h1>World Population Analyzer</h1>
-        <p>Visual representations of world population (as of Dec. 2015)</p>
-        <p>Data Source: <a href="https://population.un.org/wpp/Download/Standard/Population/">United Nation, Population Division</a></p>
+  <div class="container-fluid">
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="row" id="title-area">
+        <div class="col-md-12 text-center" id="title"> 
+          <h1>World Population Analyzer</h1>
+        </div>
+      </div>
+
+      <div class="row float-left" id="top-bar">
+        <div class="col-md-2" id="year">
+          <h5>Select Year:</h5>
+          <select id="selYear" onchange="optionChangedYear(this.value)"></select></span>
+        </div>
+
+        <div class="col-md-2 float-left" id="country">
+          <h5>Select Country:</h5>
+          <select id="selCountry" onchange="optionChanged(this.value)"></select>
+        </div>
+
+        <div class="col-md-8 "  id="country-metadata"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid chart-area">
+    <div class="row" id="chart-area1">    
+      <div class="col-md-6">
+        <div id="population-line"></div>
+      </div>
+
+      <div class="col-md-6">
+        <div id="population-stack"></div>
       </div>
     </div>
 
-
-    <div class="row" id="top-bar">
-      <div class="col-md-2" id="year">
-        <h5>Select Year:</h5>
-        <select id="selYear" onchange="optionChangedYear(this.value)"></select>
-      </div>
-
-      <div class="col-md-2" id="country">
-        <h5>Select Country:</h5>
-        <select id="selCountry" onchange="optionChanged(this.value)"></select>
-      </div>
-
-      <div class="col-md-8 "  id="country-metadata"></div>
-    </div>
-
-    <div class data-row-height ="large">    
-      <div class ="col-md-6">
-      <div id="population-line">
-      </div>
-    </div>
-
-    <!--<div class data-row-height ="large">  -->  
-      <div  class ="col-md-6">
-      <div id="population-stack">
-      </div>
-    </div>
-
-
-    <div class="row" id="map-area">
+    <div class="row" id="map-area"><br>
       <h3 id="population-map">World Population Map</h3><br>
       <h4 id="population-indicator">Population:
         <span id="red"><b>Over 100 million</b></span>
@@ -69,21 +67,49 @@
         <span id="green"><b> | Over 0.5 million</b></span>
         <span id="lightgreen"><b> | Over 0.1 million</b></span>
         <span id="blue"><b> | Under 0.1 million</b></span>
-      </h4><br>
-      <div class="col-md-12" id="map-area">
-        <div id="map"></div>
-      </div>
+      </h4>
+      <div class="col-md-12" id="map"></div>
     </div>
 
 
     <div class="row">
-      <div class="col-md-12">
-        <div id="svg3"><br><br></div>
-      </div>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
+      <p>second area</p>
     </div>
-
   </div>
 
+
+
+  
   <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -92,7 +118,6 @@
   <script src="{{ url_for('static', filename='js/logic2.js') }}"></script>
   <script src="{{ url_for('static', filename='js/logic3.js') }}"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-
 </body>
 
 </html>

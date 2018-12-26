@@ -7,6 +7,8 @@ var countries = [];
 var myMap = L.map("map", {
   center: [38.7223, -9.1393],
   zoom: 3
+  // maxZoom: 19,
+  // minZoom: 1
 });
 
 
