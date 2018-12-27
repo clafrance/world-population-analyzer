@@ -46,6 +46,9 @@
     </div>
   </div>
 
+  <div class="container-fluid">
+  </div>
+
   <div class="container-fluid chart-area">
     <div class="row margin-bottom-20 border-gray" id="chart-area1">    
       <div class="col-md-6">
@@ -72,26 +75,29 @@
     </div>
 
     <div class="row margin-bottom-20 border-gray" id="chart-area2">    
-      <div class="col-md-6">Top 10 populated country vs world population Pie Chart3
+      <div class="col-md-6 text-center">
+        <h4>Top 10 most populated countries vs world population</h4>
         <div id="population-line"></div>
+        <canvas id="pie-chart" height="200"></canvas>
       </div>
 
-      <div class="col-md-6">Top 10 fasted growing country Bar Chart4
+      <div class="col-md-6 text-center">
+        <h4>Top 10 fasted growing countries growth rate vs world</h4>
         <div id="population-stack"></div>
+        <canvas id="bar-chart-horizontal" height="200"></canvas>
       </div>
     </div>
   </div>
 
-  <footer>
-    <div class="container-fluid">
-      <div class="row text-center">
-        <p>Data Source: <a href="https://population.un.org/wpp/Download/Standard/Population/">United Nation, Population Division</a></p>
-      </div>
+  <div class="container-fluid footer">
+    <div class="row text-center">
+      <p>Data Source: <a href="https://population.un.org/wpp/Download/Standard/Population/">United Nation, Population Division</a></p>
     </div>
-  </footer>
+  </div>
 
   <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/config.js') }}"></script>
   <script src="{{ url_for('static', filename='js/logic1.js') }}"></script>

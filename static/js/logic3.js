@@ -122,3 +122,45 @@ function countryInfo(country) {
   });
 }
 
+
+
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [{
+        label: "Population (millions)",
+        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+        data: [2478,5267,734,784,433]
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: ''
+      }
+    }
+});
+
+
+new Chart(document.getElementById("bar-chart-horizontal"), {
+    type: 'horizontalBar',
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America", "CCC", "DDD", "EEE", "FFF", "GGG"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#c4880", "#f45850", "#c458c0", "#c45c50", "#c4bb50"],
+          data: [2478, 5267, 734, 784, 433, 400, 300, 450, 800, 1000]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: ''
+      }
+    }
+});
+

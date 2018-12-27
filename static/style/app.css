@@ -8,28 +8,35 @@ body {
 }
 
 .container-fluid {
-	margin-left: 50px;
-	margin-right: 50px;
+	margin-left: 100px;
+	margin-right: 100px;
 }
 
 .margin-bottom-20 {
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
 .border-gray {
 	border: 1px solid gray;
 }
 
+.row {
+	overflow: auto;
+}
+
 .navbar-fixed-top {
 	overflow: auto;
 }
 
-#title-area {
+/*#title-area {
 	background-color: rgb(226, 140, 11);
-}
+}*/
 
-#title {
+#title-area {
 	padding-bottom: 16px;
+	margin-left: 100px;
+	margin-right: 100px;
+	border: 1px solid red;
 	background-color: rgb(226, 140, 11);
 }
 
@@ -39,9 +46,9 @@ body {
 	clear: left;
 }
 
-#top-bar {
-	margin-left: 50px;
-	margin-right: 50px;
+div#top-bar {
+	margin-left: 100px;
+	margin-right: 100px;
 	border: 1px solid gray;
 }
 
@@ -67,19 +74,23 @@ body {
 	margin-right: 5px;
 }
 
-footer {
+.footer {
+	padding-top: 10px;
 	background-color: rgb(226, 140, 11);
 }
 
-footer .row {
-	padding-top: 10px;
-}
-
-.chart-area1 {
+/*.chart-area1 {
 	margin-top: 120px;
 	height: 500px;
 	max-height: 500px;
+} */
+
+#chart-area2 {
+	padding-top: 40px;
+	height: 500px;
+	max-height: 500px;
 } 
+
 
 .text-center {
 	text-align: center;
