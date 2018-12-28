@@ -1,5 +1,5 @@
 // Christie: functions to build the map and charts
-//function for map";
+//function for map
 console.log("Lets Start plot map");
 
 var countries = [];
@@ -124,24 +124,70 @@ function countryInfo(country) {
 
 
 
-new Chart(document.getElementById("pie-chart"), {
-    type: 'pie',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [{
-        label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [2478,5267,734,784,433]
-      }]
-    },
-    options: {
-      title: {
-        display: true,
-        text: ''
-      }
-    }
-});
+// Function for the pie chart
+function piePlot(year) {
 
+  // Clear thwe previous chart
+  document.getElementById("pie-chart-div").innerHTML = '&nbsp;';
+  document.getElementById("pie-chart-div").innerHTML = '<canvas id="pie-chart"></canvas>';
+  var ctx = document.getElementById("pie-chart").getContext("2d");
+
+  let options = {
+        tooltips: {
+            enabled: true
+        },
+        pieceLabel: {
+            mode: 'value'
+        },
+        responsive: false,
+        legend: {
+            position: 'right',
+        },
+        title: {
+            display: true,
+            text: '',
+            fontSize: 20
+        },
+        animation: {
+            animateScale: false,
+            animateRotate: false
+        }
+      }
+
+  let background_colors = ["#ea6f49", "#65d3d3","#3876c7","#eed85b","#68d8d7", "#a276af", "#dd2f21","#ec6fa4","#68c046","#499d72"];
+
+  let url_map = `/top_10_populated_countries_by_year/${year}`; 
+
+  // Plot the graph
+  d3.json(url_map).then(function(response) {
+
+    let data = response[0];
+
+    data.country.shift();
+    let countries = data.country;
+
+    data.population_percentage.shift();
+    let population_percentages = data.population_percentage;
+
+    // Tried to use this to clear the old chart, doesn't work for this case
+    // if(myPie != null) {
+    //   myPie.destroy();
+    // };
+
+    var myPie = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: countries,
+        datasets: [{
+          backgroundColor: ["#E77F70", "#9AB8CF","#F08CA0","#eed85b","#68d8d7", "#E3E0D6", "#F6C8CE","#B7D4DA","#B0D9B4","#FFF4B1", "#75D9B4"],
+          data: population_percentages
+        }]
+      },
+
+      options: options
+    });
+  });
+}
 
 new Chart(document.getElementById("bar-chart-horizontal"), {
     type: 'horizontalBar',
@@ -163,4 +209,3 @@ new Chart(document.getElementById("bar-chart-horizontal"), {
       }
     }
 });
-

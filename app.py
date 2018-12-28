@@ -267,56 +267,57 @@ def total_population_by_year(year):
     return jsonify(result)
 
 
-@app.route("/top_ten_total_population_by_year/<year>")
-def top_ten_total_population_by_year(year):
+@app.route("/top_10_populated_countries_by_year/<year>")
+def top_10_populated_countries_by_year(year):
     stmt1 = db.session.query(Total_Population_Both_Sexes).statement
     df_total_population = pd.read_sql_query(stmt1, db.session.bind)
-    df_total_population = df_total_population.sort_values(year, ascending=False).head(10)
-    # list of countries:
+  
     stmt2 = db.session.query(Country_Continent).statement
-    df_year = pd.read_sql_query(stmt2, db.session.bind)
-
-    list_of_countries = list(df.iloc[:, 1])
-
+    df = pd.read_sql_query(stmt2, db.session.bind)
 
     list_of_country_codes = df.iloc[:, 3]
-    country_code_df = list_of_country_codes.to_frame(name='country_code')
-    df_merged = country_code_df.merge(df_total_population, left_on='country_code', right_on='country_code', how='inner')
-    # df_merged.drop(columns=['ID', 'region_subregion_country_area', 'country_code'], inplace=True)
-    df_merged.drop(columns=['ID', 'region_subregion_country_area'], inplace=True)
 
+    # Add 900 to the codes
+    list_of_country_codes.index += 1
+    country_code_df = list_of_country_codes.to_frame()
+    country_code_df = pd.DataFrame(np.insert(country_code_df.values, 0, values=[900], axis=0))
+    country_code_df.columns=['country_code']
+
+    # Merge the country df with the population df
+    df_merged = country_code_df.merge(df_total_population, left_on='country_code', right_on='country_code', how='inner')
+    
+    # Sort by population to get top 10
+    df_merged = df_merged.sort_values(year, ascending=False).head(11)
+
+    # Get the top 10 country names
+    list_of_most_populated_countries = list(df_merged.iloc[:, 2])
+
+    # Insert an element
+    list_of_most_populated_countries.insert(11, "Rest of the World")
+
+    # Calculate the population for the rest of the world
+    world_population_by_year = df_merged.iloc[0,3:]
+    most_populate_country_total_by_year = df_merged.iloc[1:,3:].sum(axis=0)
+    difference = world_population_by_year.subtract(most_populate_country_total_by_year, level=None, fill_value=None, axis=0)
+
+    # Append the difference to df_merged
+    df_merged.drop(columns=['ID', 'region_subregion_country_area', 'country_code'], inplace=True)
+    df_merged = df_merged.append(difference, ignore_index=True)
+
+    # Transpose the dataframe os it can be queryed by year
     df_merged_new = df_merged.transpose()
     df_merged_new.index.name = 'year'
     populations_orderby_contries_index = list(df_merged_new.loc[year])
 
-    result = [{"country": list_of_countries,
-            "population": populations_orderby_contries_index,
-            "latitude": list_of_latitudes,
-            "longitude": list_of_longitudes,
-            "capital": list_of_capitals}]
+    world_population = populations_orderby_contries_index[0]
+    population_percentage =  [round((item/world_population)*100, 2) for item in populations_orderby_contries_index] 
 
-    # for i in range(len(list_of_countries)):
-    #     temp_dict = {"name": list_of_countries[i],
-    #         "capital": list_of_capitals[i], 
-    #         "location": [list_of_latitudes[i], list_of_longitudes[i]],
-    #         "population": populations_orderby_contries_index[i]}
-    #     result.append(temp_dict)
+
+    result = [{"country": list_of_most_populated_countries,
+            "population": populations_orderby_contries_index,
+            "population_percentage": population_percentage}]
 
     return jsonify(result)
-
-
-# @app.route("/world_total_population_by_year/<year>")
-# def world_total_population_by_year(year):
-
-
-
-# @app.route("/world_male_population_by_year/<year>")
-# def world_male_population_by_year(year):
-
-
-# @app.route("/world_female_population_by_year/<year>")
-# def world_female_population_by_year(year):
-
 
 
 

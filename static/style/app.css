@@ -41,7 +41,7 @@ body {
 }
 
 .chart-area {
-	margin-top: 205px;
+	margin-top: 230px;
 	position: relative;
 	clear: left;
 }
@@ -54,6 +54,8 @@ div#top-bar {
 
 #country-metadata {
 	margin-top: 36px;
+	background-color: #0079B8;
+	color: #fff;
 }
 
 #selYear {
@@ -85,11 +87,18 @@ div#top-bar {
 	max-height: 500px;
 } */
 
-#chart-area2 {
-	padding-top: 40px;
-	height: 500px;
-	max-height: 500px;
+#chart-area2, #chart-area3 {
+	padding-top: 10px;
+	height: 550px;
+	max-height: 550px;
 } 
+
+#pie-chart {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 900px;
+}
 
 
 .text-center {

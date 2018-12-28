@@ -20,7 +20,7 @@ function populationPlot(country) {
     var trace2= {
       type: "scatter",
       mode: "lines",
-      name: "Male PoPulation ",
+      name: "Male PoPulation",
       x: response.map(data => data.Year),
       y: response.map(data => data.m_Population),
       line: {
@@ -42,7 +42,7 @@ function populationPlot(country) {
     var data = [trace1,trace2,trace3];
 
     var layout = {
-      title: "Population For " + country,
+      title: "Population For " + country + " (in thousands)",
       xaxis: {
 				type: "date",
 				title: "Years"
@@ -99,7 +99,7 @@ function agePlot(country,year) {
 
 		var layout = {
 			barmode: 'stack',
-			title: "Population by Age Group",
+			title: "Population by Age Group (in thousands)",
 		};
 		
 
