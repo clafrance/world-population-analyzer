@@ -149,8 +149,8 @@ function topTenPlot(year) {
             fontSize: 20
         },
         animation: {
-            animateScale: false,
-            animateRotate: false
+            animateScale: true,
+            animateRotate: true
         }
       }
 
