@@ -27,7 +27,7 @@ function init() {
     worldInfo('1950');
     populationPlot("WORLD")
 		agePlot("WORLD",1950)
-		piePlot(1950)
+		topTenPlot(1950)
 
     // Add all build chart function here here:
     // buildCharts(world);
@@ -55,7 +55,7 @@ function optionChanged(newCountry) {
 function optionChangedYear(year) {
   mapPlot(year);
   worldInfo(year);
-  piePlot(year);
+  topTenPlot(year);
 }
 
 init();

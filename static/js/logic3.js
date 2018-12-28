@@ -125,12 +125,12 @@ function countryInfo(country) {
 
 
 // Function for the pie chart
-function piePlot(year) {
+function topTenPlot(year) {
 
   // Clear thwe previous chart
-  document.getElementById("pie-chart-div").innerHTML = '&nbsp;';
-  document.getElementById("pie-chart-div").innerHTML = '<canvas id="pie-chart"></canvas>';
-  var ctx = document.getElementById("pie-chart").getContext("2d");
+  document.getElementById("top-ten-div").innerHTML = '&nbsp;';
+  document.getElementById("top-ten-div").innerHTML = '<canvas id="top-ten"></canvas>';
+  var ctx = document.getElementById("top-ten").getContext("2d");
 
   let options = {
         tooltips: {
