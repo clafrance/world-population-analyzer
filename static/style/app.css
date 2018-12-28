@@ -81,25 +81,22 @@ div#top-bar {
 	background-color: rgb(226, 140, 11);
 }
 
-/*.chart-area1 {
-	margin-top: 120px;
-	height: 500px;
-	max-height: 500px;
-} */
-
 #chart-area2, #chart-area3 {
 	padding-top: 10px;
-	height: 550px;
-	max-height: 550px;
+	height: 580px;
+	max-height: 580px;
 } 
 
-#top-ten {
+#chart-area3 {
+	padding-top: 20px;
+}
+
+#top-ten, #growth-rate {
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 900px;
 }
-
 
 .text-center {
 	text-align: center;

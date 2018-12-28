@@ -13,6 +13,7 @@ function init() {
 				.property("value", country);
 	
 		});
+
 		data.years_bin.forEach((year) => {
 			selector2
 				.append("option")
@@ -20,18 +21,16 @@ function init() {
 				.property("value", year);
 	
 		});
+
 		// Use the first country from the list to build the initial plots
     const world = data.countries[0];
-    // const world = countries[0];
+ 
     mapPlot(1950);
     worldInfo('1950');
-    populationPlot("WORLD")
-		agePlot("WORLD",1950)
-		topTenPlot(1950)
-
-    // Add all build chart function here here:
-    // buildCharts(world);
-    // buildMetadata(world);
+    populationPlot("WORLD");
+		agePlot("WORLD",1950);
+		topTenPlot(1950);
+		growthRatePlot(1950);
 	});
 }
 
@@ -56,6 +55,7 @@ function optionChangedYear(year) {
   mapPlot(year);
   worldInfo(year);
   topTenPlot(year);
+  growthRatePlot(year);
 }
 
 init();

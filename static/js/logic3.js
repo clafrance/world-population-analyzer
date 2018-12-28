@@ -124,7 +124,7 @@ function countryInfo(country) {
 
 
 
-// Function for the pie chart
+// Function for the top ten populated countries chart
 function topTenPlot(year) {
 
   // Clear thwe previous chart
@@ -156,10 +156,10 @@ function topTenPlot(year) {
 
   let background_colors = ["#ea6f49", "#65d3d3","#3876c7","#eed85b","#68d8d7", "#a276af", "#dd2f21","#ec6fa4","#68c046","#499d72"];
 
-  let url_map = `/top_10_populated_countries_by_year/${year}`; 
+  let url = `/top_10_populated_countries_by_year/${year}`; 
 
   // Plot the graph
-  d3.json(url_map).then(function(response) {
+  d3.json(url).then(function(response) {
 
     let data = response[0];
 
@@ -189,23 +189,90 @@ function topTenPlot(year) {
   });
 }
 
-new Chart(document.getElementById("bar-chart-horizontal"), {
-    type: 'horizontalBar',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America", "CCC", "DDD", "EEE", "FFF", "GGG"],
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#c4880", "#f45850", "#c458c0", "#c45c50", "#c4bb50"],
-          data: [2478, 5267, 734, 784, 433, 400, 300, 450, 800, 1000]
+
+// Function for the pie chart
+function growthRatePlot(year) {
+
+  // Clear thwe previous chart
+  document.getElementById("growth-rate-div").innerHTML = '&nbsp;';
+  document.getElementById("growth-rate-div").innerHTML = '<canvas id="growth-rate"></canvas>';
+  var ctx = document.getElementById("growth-rate").getContext("2d");
+
+  let options = {
+        tooltips: {
+            enabled: true
+        },
+        pieceLabel: {
+            mode: 'value'
+        },
+        responsive: false,
+        legend: false,
+        title: {
+            display: true,
+            text: '',
+            fontSize: 20
+        },
+        animation: {
+            animateScale: false,
+            animateRotate: false
         }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: ''
       }
-    }
-});
+
+  let url = `/top_10_populated_countries_by_year/${year}`; 
+
+  // Plot the graph
+  d3.json(url).then(function(response) {
+
+    let data = response[0];
+
+    // data.country.shift();
+    // let countries = data.country;
+
+    // data.population_percentage.shift();
+    // let population_percentages = data.population_percentage;
+
+    var myBar = new Chart(ctx, {
+      type: 'horizontalBar',
+      data: {
+        // labels: countries,
+        labels: ["Africa", "Asia", "Europe", "Latin America", "North America", "CCC", "DDD", "EEE", "FFF", "GGG"],
+        datasets: [{
+          backgroundColor:  ["#E77F70", "#9AB8CF","#F08CA0","#eed85b","#68d8d7", "#E3E0D6", "#F6C8CE","#B7D4DA","#FFF4B1", "#75D9B4"],
+          // data: growth_rates
+          data: [2478, 5267, 734, 784, 433, 400, 300, 450, 800, 1000]
+        }]
+      },
+
+      options: options
+    });
+  });
+}
+
+
+
+
+
+
+
+
+
+// new Chart(document.getElementById("bar-chart-horizontal"), {
+//     type: 'horizontalBar',
+//     data: {
+//       labels: ["Africa", "Asia", "Europe", "Latin America", "North America", "CCC", "DDD", "EEE", "FFF", "GGG"],
+//       datasets: [
+//         {
+//           label: "Population (millions)",
+//           backgroundColor: ["#E77F70", "#9AB8CF","#F08CA0","#eed85b","#68d8d7", "#E3E0D6", "#F6C8CE","#B7D4DA","#FFF4B1", "#75D9B4"],
+//           data: [2478, 5267, 734, 784, 433, 400, 300, 450, 800, 1000]
+//         }
+//       ]
+//     },
+//     options: {
+//       legend: { display: false },
+//       title: {
+//         display: true,
+//         text: ''
+//       }
+//     }
+// });
