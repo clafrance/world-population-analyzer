@@ -46,7 +46,7 @@ function mapPlot(year) {
   // console.log(url_map);
   d3.json(url_map).then(function(response) {
 
-    var data = response[0];
+    let data = response[0];
 
     data.country.forEach((country, i) => {
 
@@ -58,7 +58,7 @@ function mapPlot(year) {
       countries.push(temp_dict);
     });
 
-    for (var i = 0; i < countries.length; i++) {
+    for (let i = 0; i < countries.length; i++) {
       L.circle(countries[i].location, {
         fillOpacity: 0.75,
         color: chooseColor(countries[i].population) ,
@@ -130,7 +130,7 @@ function topTenPlot(year) {
   // Clear thwe previous chart
   document.getElementById("top-ten-div").innerHTML = '&nbsp;';
   document.getElementById("top-ten-div").innerHTML = '<canvas id="top-ten"></canvas>';
-  var ctx = document.getElementById("top-ten").getContext("2d");
+  let ctx = document.getElementById("top-ten").getContext("2d");
 
   let options = {
         tooltips: {
@@ -212,34 +212,36 @@ function growthRatePlot(year) {
             text: '',
             fontSize: 20
         },
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Growth Rate (percentage)'
+            }
+          }]
+        },
         animation: {
-            animateScale: false,
-            animateRotate: false
+            animateScale: true,
+            animateRotate: true
         }
       }
 
-  let url = `/top_10_populated_countries_by_year/${year}`; 
+  let url = `/growth_rates_by_year/${year}`; 
 
   // Plot the graph
   d3.json(url).then(function(response) {
 
     let data = response[0];
+    let top_countries = data.countries;
+    let growth_rates = data.country_growth_rates;
 
-    // data.country.shift();
-    // let countries = data.country;
-
-    // data.population_percentage.shift();
-    // let population_percentages = data.population_percentage;
-
-    var myBar = new Chart(ctx, {
+    let myBar = new Chart(ctx, {
       type: 'horizontalBar',
       data: {
-        // labels: countries,
-        labels: ["Africa", "Asia", "Europe", "Latin America", "North America", "CCC", "DDD", "EEE", "FFF", "GGG"],
+        labels: top_countries,
         datasets: [{
           backgroundColor:  ["#E77F70", "#9AB8CF","#F08CA0","#eed85b","#68d8d7", "#E3E0D6", "#F6C8CE","#B7D4DA","#FFF4B1", "#75D9B4"],
-          // data: growth_rates
-          data: [2478, 5267, 734, 784, 433, 400, 300, 450, 800, 1000]
+          data: growth_rates
         }]
       },
 

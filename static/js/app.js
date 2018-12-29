@@ -30,7 +30,7 @@ function init() {
     populationPlot("WORLD");
 		agePlot("WORLD",1950);
 		topTenPlot(1950);
-		growthRatePlot(1950);
+		growthRatePlot(1955);
 	});
 }
 
