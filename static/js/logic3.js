@@ -250,12 +250,6 @@ function growthRatePlot(year) {
 
 
 
-
-
-
-
-
-
 // new Chart(document.getElementById("bar-chart-horizontal"), {
 //     type: 'horizontalBar',
 //     data: {

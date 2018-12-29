@@ -12,6 +12,7 @@ from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 import load_data
+import utilities
 
 
 app = Flask(__name__)
@@ -64,8 +65,8 @@ def countries_old():
     country_list = list(df.iloc[:, 1])
 
     country_list.insert(0, "WORLD")
-
     return jsonify(country_list)
+
 
 @app.route("/countries")
 def countries():
@@ -85,7 +86,6 @@ def countries():
     return jsonify(dictA)
 
 
-
 @app.route("/years_list")
 def years_list():
     """Return a list of Years."""
@@ -93,6 +93,7 @@ def years_list():
     stmt = db.session.query(Total_Population_Both_Sexes).statement
     df_all = pd.read_sql_query(stmt, db.session.bind)
     return jsonify(list(df_all.columns[3:]))
+
 
 @app.route("/populations_all_world")
 def populations():
@@ -139,6 +140,7 @@ def population_all(country):
 
     return jsonify(df_all.to_dict(orient="records"))
 
+
 @app.route("/age_group/<country>/<year>")
 def age_group(country,year):
     """Return population for both  sex for given  region selection."""
@@ -150,8 +152,7 @@ def age_group(country,year):
     df_a2 =df_a.transpose()
     df_a2.reset_index(level=0, inplace=True)
     df_a2.columns = ["Age_Group","A_Population"]
-    
-    
+       
     #Female Population
     stmt = db.session.query(Population_By_Age_Female).filter(Population_By_Age_Female.reference_date == year)\
         .filter(Population_By_Age_Female.region_subregion_country_area == country).statement
@@ -201,12 +202,13 @@ def country_info(country):
         country_info["Longitude"] = results[5]
         country_info["Continent"] = results[6]
 
-    # print(results)
     return jsonify(country_info)
 
 
 @app.route("/total_population_by_year/<year>")
 def total_population_by_year(year):
+    """Return total population for a given year"""
+
     stmt1 = db.session.query(Total_Population_Both_Sexes).statement
     df_total_population = pd.read_sql_query(stmt1, db.session.bind)
 
@@ -255,7 +257,6 @@ def total_population_by_year(year):
     df_merged_female_new.index.name = 'year'
     female_populations_orderby_contries_index = list(df_merged_female_new.loc[year])
 
-
     result = [{"country": list_of_countries,
             "population": populations_orderby_contries_index,
             "male_population": male_populations_orderby_contries_index,
@@ -269,6 +270,8 @@ def total_population_by_year(year):
 
 @app.route("/top_10_populated_countries_by_year/<year>")
 def top_10_populated_countries_by_year(year):
+    ###Return top ten most populated countries with world population for a given year"""
+
     stmt1 = db.session.query(Total_Population_Both_Sexes).statement
     df_total_population = pd.read_sql_query(stmt1, db.session.bind)
   
@@ -312,7 +315,6 @@ def top_10_populated_countries_by_year(year):
     world_population = populations_orderby_contries_index[0]
     population_percentage =  [round((item/world_population)*100, 2) for item in populations_orderby_contries_index] 
 
-
     result = [{"country": list_of_most_populated_countries,
             "population": populations_orderby_contries_index,
             "population_percentage": population_percentage}]
@@ -320,7 +322,51 @@ def top_10_populated_countries_by_year(year):
     return jsonify(result)
 
 
+@app.route("/growth_rates_by_year/<year>")
+def growth_rates_by_year(year):
+    ###Return top ten most populated countries with world population for a given year"""
 
+    stmt1 = db.session.query(Total_Population_Both_Sexes).statement
+    total_population_df = pd.read_sql_query(stmt1, db.session.bind)
+
+    stmt2 = db.session.query(Population_Growth_Rate).statement
+    growth_rates_df = pd.read_sql_query(stmt2, db.session.bind)
+
+    temp1 = growth_rates_df.iloc[:, 0:3]
+    temp2 = growth_rates_df.iloc[:, 3:].rename(columns = lambda x : str(x)[5:])
+    temp2.insert(loc=0, column='1950', value=0)
+    growth_rates_df = pd.concat([temp1, temp2], axis=1, join='inner')
+
+
+    stmt3 = db.session.query(Country_Continent).statement
+    df = pd.read_sql_query(stmt3, db.session.bind)
+    list_of_country_codes = df.iloc[:, 3]
+    list_of_country_codes.index += 1
+    country_code_df = list_of_country_codes.to_frame()
+    country_code_df = pd.DataFrame(np.insert(country_code_df.values, 0, values=[900], axis=0))
+    country_code_df.columns = ['country_code']
+
+    growth_rates_df = country_code_df.merge(growth_rates_df, left_on='country_code', right_on='country_code', how='inner')
+    populations_merged_df = country_code_df.merge(total_population_df, left_on='country_code', right_on='country_code', how='inner')
+    populations_merged_df = populations_merged_df.sort_values(year, ascending=False).head(11)
+    top_ten_country_codes = populations_merged_df.iloc[:, 0]
+    top_ten_country_names_list = list(populations_merged_df.iloc[:, 2])
+    top_ten_country_names_list.pop(0)
+    top_ten_country_codes_df = top_ten_country_codes.to_frame(name='country_code')
+    top_ten_country_growth_rates_df = top_ten_country_codes_df.merge(growth_rates_df, left_on='country_code', right_on='country_code', how='inner')
+    top_ten_country_growth_rates_df = top_ten_country_growth_rates_df.iloc[:, 3:]
+    df_new = top_ten_country_growth_rates_df.transpose()
+    df_new.index.name = 'year'
+    growth_rates_list = list(df_new.loc[year])
+    world_growth_rate = growth_rates_list.pop(0)
+
+    result = [{"world": [world_growth_rate],
+        "countries": top_ten_country_names_list,
+        "country_growth_rates": growth_rates_list}]
+
+    return jsonify(result)
+
+    
 
 if __name__ == "__main__":
     app.run()

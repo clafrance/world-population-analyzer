@@ -28,10 +28,6 @@ body {
 	overflow: auto;
 }
 
-/*#title-area {
-	background-color: rgb(226, 140, 11);
-}*/
-
 #title-area {
 	padding-bottom: 16px;
 	margin-left: 100px;
@@ -40,8 +36,12 @@ body {
 	background-color: rgb(226, 140, 11);
 }
 
+#title p {
+	font-size: 20px;
+}
+
 .chart-area {
-	margin-top: 230px;
+	margin-top: 270px;
 	position: relative;
 	clear: left;
 }
