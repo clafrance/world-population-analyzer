@@ -66,7 +66,6 @@ function mapPlot(year) {
         radius: markerSize()
       }).bindPopup("<h2>" + countries[i].name + "</h2> <hr> <h4>Population: " + countries[i].population + " (k)</h4>").addTo(myMap);
     }
-      // console.log(countries);
   });
 }
 
@@ -249,26 +248,3 @@ function growthRatePlot(year) {
     });
   });
 }
-
-
-
-// new Chart(document.getElementById("bar-chart-horizontal"), {
-//     type: 'horizontalBar',
-//     data: {
-//       labels: ["Africa", "Asia", "Europe", "Latin America", "North America", "CCC", "DDD", "EEE", "FFF", "GGG"],
-//       datasets: [
-//         {
-//           label: "Population (millions)",
-//           backgroundColor: ["#E77F70", "#9AB8CF","#F08CA0","#eed85b","#68d8d7", "#E3E0D6", "#F6C8CE","#B7D4DA","#FFF4B1", "#75D9B4"],
-//           data: [2478, 5267, 734, 784, 433, 400, 300, 450, 800, 1000]
-//         }
-//       ]
-//     },
-//     options: {
-//       legend: { display: false },
-//       title: {
-//         display: true,
-//         text: ''
-//       }
-//     }
-// });

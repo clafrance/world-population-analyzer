@@ -46,8 +46,6 @@ Population_By_Age_Both_Sexes = Base.classes.population_by_age_both_sexes
 Country_Continent = Base.classes.country_continent
   
 
-# db.session.query(Total_Population_Both_Sexes)
-
 
 @app.route("/")
 def index():
@@ -104,7 +102,8 @@ def populations():
     df_new = df_all.transpose()
     df_new.reset_index(level=0, inplace=True)
     df_new.columns = ["Year","Population"]
-    return jsonify(df_new.to_dict(orient="records"))    
+    return jsonify(df_new.to_dict(orient="records"))   
+
 
 @app.route("/population_all/<country>")
 def population_all(country):
@@ -176,7 +175,8 @@ def age_group(country,year):
     df_bin =df_a2.merge(df_m2, on='Age_Group')
     df_bin =df_bin.merge(df_f2, on='Age_Group')
    
-    return jsonify(df_bin.to_dict(orient="records"))  
+    return jsonify(df_bin.to_dict(orient="records")) 
+     
     
 @app.route("/country_info/<country>")
 def country_info(country):
