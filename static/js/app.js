@@ -37,7 +37,6 @@ function init() {
 
 // Function to build new charts when select a country
 function optionChanged(newCountry) {
-  // year = d3.select;
   year = '1950';
   // buildCharts(newSample);
   if (newCountry === "WORLD") {
