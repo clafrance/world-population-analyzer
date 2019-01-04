@@ -16,6 +16,10 @@ body {
 	margin-bottom: 30px;
 }
 
+.margin-bottom-10 {
+	margin-bottom: 30px;
+}
+
 .border-gray {
 	border: 1px solid gray;
 }
@@ -32,7 +36,6 @@ body {
 	padding-bottom: 16px;
 	margin-left: 100px;
 	margin-right: 100px;
-	border: 1px solid red;
 	background-color: rgb(226, 140, 11);
 }
 
@@ -41,7 +44,7 @@ body {
 }
 
 .chart-area {
-	margin-top: 270px;
+	margin-top: 250px;
 	position: relative;
 	clear: left;
 }
@@ -49,7 +52,7 @@ body {
 div#top-bar {
 	margin-left: 100px;
 	margin-right: 100px;
-	border: 1px solid gray;
+/*	border: 1px solid gray;*/
 }
 
 #country-metadata {
