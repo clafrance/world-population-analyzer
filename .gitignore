@@ -104,6 +104,6 @@ venv.bak/
 .mypy_cache/
 
 # config.js file with mapbox api key
-# config.js
+config.js
 
 DS_Store.dms
