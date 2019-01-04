@@ -18,7 +18,7 @@ import utilities
 app = Flask(__name__)
 
 # # Run the load_to_sqlite() function in load_data.py
-# load_data.load_to_sqlite()
+load_data.load_to_sqlite()
 
 
 
