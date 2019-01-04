@@ -59,6 +59,7 @@ function mapPlot(year) {
     });
 
     for (let i = 0; i < countries.length; i++) {
+      
       L.circle(countries[i].location, {
         fillOpacity: 0.75,
         color: chooseColor(countries[i].population) ,
