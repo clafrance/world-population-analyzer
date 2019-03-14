@@ -107,3 +107,4 @@ venv.bak/
 # config.js
 
 DS_Store.dms
+.DS_Store
