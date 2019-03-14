@@ -108,3 +108,4 @@ venv.bak/
 
 DS_Store.dms
 .DS_Store
+.sqlite
